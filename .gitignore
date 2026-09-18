@@ -1,0 +1,8 @@
+# Original recordings and research stay local. Only site/assets is published.
+/*.mp4
+/*.mov
+/research/
+/portfolio-pages.zip
+__pycache__/
+.DS_Store
+/.pnpm-store/

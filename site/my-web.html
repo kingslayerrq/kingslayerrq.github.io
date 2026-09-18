@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A platform connecting game discovery, publishing workflows, and developer communities.">
+  <meta name="color-scheme" content="dark light">
+  <title>GameDev Hub — Richard Qu</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body class="case-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header wrap">
+    <a class="brand" href="index.html" aria-label="Richard Qu, home"><span class="brand-mark">rq<span>_</span></span><span>Kingslayerrq<small>PERSONAL NODE / 001</small></span></a>
+    <nav aria-label="Main navigation"><a href="index.html#about">About</a><a href="projects.html">Projects</a><a href="index.html#contact">Contact</a></nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to light mode"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Light mode</span></button>
+  </header>
+    <main id="main" class="case-study wrap">
+    <section class="case-hero" aria-labelledby="case-title">
+      <a class="text-link" href="projects.html#my-web">← Back to selected work</a>
+      <p class="eyebrow accent">CASE STUDY / FULL-STACK ENGINEERING / MY-WEB</p>
+      <h1 id="case-title">A home for games.<br><em>A system behind it.</em></h1>
+      <p class="case-lead">GameDev Hub connects game discovery with the machinery of publishing: accounts, uploads, relational metadata, and live Discord events.</p>
+      <div class="tags"><span>React</span><span>Express</span><span>PostgreSQL · Prisma</span><span>AWS S3</span><span>Redis</span><span>WebSockets</span></div>
+      <div class="project-links"><a class="text-link" href="https://github.com/kingslayerrq/my-web">Explore the repository ↗</a><a class="text-link" href="#publishing">Follow an upload ↓</a></div>
+    </section>
+    <figure class="case-shot"><a href="assets/my-web-catalog.png" aria-label="Open full-size GameDev Hub catalog screenshot"><img src="assets/my-web-catalog.png" width="1265" height="712" alt="Original GameDev Hub catalog running locally, with a purple interface and two sample game cards"></a><figcaption><span class="accent">01 / THE INTERFACE</span> Original React client, reconstructed locally with sample records and my gameplay images. The former cloud deployment is offline; these are not production usage statistics.</figcaption></figure>
+    <section class="case-section case-overview" aria-labelledby="overview-title">
+      <div><p class="eyebrow">THE PROJECT</p><h2 id="overview-title">More than a<br>collection of pages.</h2></div>
+      <div><p>I built a platform where developers can prepare a game listing, attach media and downloadable builds, and describe their project through tags, platforms, and engine metadata. The repository also includes profiles, devlogs, threaded comments, and Discord account and bot integration.</p><p>The engineering challenge sits between those features: keeping file uploads associated with the right records, carrying identity through API requests, querying a connected data model, and managing a long-lived gateway connection.</p><p class="case-note">Archived project · Source reviewed at commit <a href="https://github.com/kingslayerrq/my-web/tree/0167189858f31c9c3b05174c140699414607dbe8">0167189 ↗</a>. Screenshots show the original UI with a local fixture API, not a restored cloud backend.</p></div>
+    </section>
+    <section class="case-section" id="architecture" aria-labelledby="architecture-title">
+      <p class="eyebrow">01 / ARCHITECTURE</p><h2 id="architecture-title">One interface. Several kinds of state.</h2>
+      <p class="section-intro">The client handles interaction and presentation. Express coordinates identity, structured data, uploaded objects, and external events.</p>
+      <div class="architecture" aria-label="Architecture: React connects to Express, which integrates PostgreSQL through Prisma, S3 uploads, Redis sessions, and the Discord gateway.">
+        <div class="arch-node"><span>CLIENT</span><h3>React + Vite</h3><p>Forms · Redux · Axios<br>Game pages · Bot console</p></div>
+        <div class="arch-connector" aria-hidden="true">↔</div>
+        <div class="arch-node"><span>APPLICATION</span><h3>Express</h3><p>Routes · Passport<br>Controllers · WebSocket relay</p></div>
+        <div class="arch-services"><div><strong>PostgreSQL / Prisma</strong><span>Relationships & queries</span></div><div><strong>AWS S3</strong><span>Media & game files</span></div><div><strong>Redis</strong><span>Session storage</span></div><div><strong>Discord API / Gateway</strong><span>Account linking & events</span></div></div>
+      </div>
+      <p class="case-note">Architecture traced from source. External services are not connected in the local screenshot reconstruction.</p>
+    </section>
+    <section class="case-section" id="publishing" aria-labelledby="publishing-title">
+      <p class="eyebrow">02 / PUBLISHING PIPELINE</p><h2 id="publishing-title">From a form to files and relationships.</h2>
+      <p class="section-intro">An upload crosses two storage systems. The client first requests a game ID, then sends a multipart update so files and database records share that identity.</p>
+      <ol class="pipeline"><li><strong>Initialize the game</strong><p>Create a game and its statistics record before attaching content.</p></li><li><strong>Send multipart data</strong><p>Combine metadata, a thumbnail, media, and downloadable builds in FormData.</p></li><li><strong>Store the objects</strong><p>Multer streams files to S3 under a game-specific key prefix.</p></li><li><strong>Persist associations</strong><p>Create media/file rows, connect or create tags, and update the game listing.</p></li></ol>
+      <figure class="case-shot"><a href="assets/my-web-publishing.png" aria-label="Open full-size game publishing form screenshot"><img src="assets/my-web-publishing.png" width="1265" height="712" loading="lazy" alt="Original Upload Your Game form with sample title and description, public visibility, thumbnail upload, and media upload controls"></a><figcaption><span class="accent">02 / THE PUBLISHING FORM</span> Local UI capture with sample text. The form also exposes platform, engine, license, and per-file options. No files were submitted to cloud storage.</figcaption></figure>
+      <details class="code-detail"><summary><span>View file upload controls <span class="summary-note">/ thumbnail, media, and builds</span></span><span class="expand" aria-hidden="true">+</span></summary><figure class="case-shot"><a href="assets/my-web-upload-options.png" aria-label="Open full-size file upload controls"><img src="assets/my-web-upload-options.png" width="1265" height="712" loading="lazy" alt="Local reconstruction showing separate thumbnail, screenshot and video, and game build upload areas, followed by platform checkboxes"></a><figcaption>Additional view of the original form in the local reconstruction. Controls shown; cloud uploads were not performed.</figcaption></figure></details>
+      <div class="case-code"><div><h3>A deliberate transaction boundary</h3><p>The controller groups media and downloadable-file inserts into one Prisma transaction. That protects this pair of database operations; S3 uploads and the later game update sit outside that boundary.</p><a class="text-link" href="https://github.com/kingslayerrq/my-web/blob/0167189858f31c9c3b05174c140699414607dbe8/server/controllers/userController.mjs#L346">Read the upload controller ↗</a></div><pre><code>await prismaClient.$transaction([
+  prismaClient.gameMedia.createMany({ data: mediaEntries }),
+  prismaClient.gameFile.createMany({ data: fileEntries }),
+]);</code></pre></div>
+    </section>
+    <section class="case-section" aria-labelledby="data-title">
+      <p class="eyebrow">03 / DATA MODEL & DISCOVERY</p><h2 id="data-title">Model the relationships. Query the intent.</h2>
+      <div class="case-columns"><div><h3>A relational publishing domain</h3><p>The Prisma schema separates accounts and profiles from games, files, and community content. Games relate to owners, tags, media, builds, statistics, and devlogs. Comment replies use a self-relation; devlogs can link contributors.</p><p>Enums represent engines, platforms, and licenses, while explicit relations describe how records connect and which deletions cascade.</p><a class="text-link" href="https://github.com/kingslayerrq/my-web/blob/0167189858f31c9c3b05174c140699414607dbe8/server/prisma/schema.prisma">Explore the schema ↗</a></div><div><h3>Search with publication rules</h3><p>Discovery searches titles and descriptions without case sensitivity, filters out private and soft-deleted games, and orders by recent updates. A count query supplies pagination metadata alongside the result page.</p><p>The query includes owner, thumbnail, tags, and statistics so the client can render a complete game card.</p><a class="text-link" href="https://github.com/kingslayerrq/my-web/blob/0167189858f31c9c3b05174c140699414607dbe8/server/controllers/gameController.mjs#L621">Read searchGames ↗</a></div></div>
+      <div class="case-code"><div><h3>Visibility belongs in the query</h3><p>The same condition is used for counting and fetching results. The subsequent query applies <code>take: size</code> and <code>skip: (page - 1) * size</code> to paginate.</p><p class="case-note">Excerpt from searchGames; formatting condensed.</p></div><pre><code>const searchCondition = {
+  OR: [
+    { title: { contains: searchQuery, mode: 'insensitive' } },
+    { description: { contains: searchQuery, mode: 'insensitive' } },
+  ],
+  AND: {
+    isPublic: true,
+    deletedAt: null,
+  },
+};</code></pre></div>
+    </section>
+    <section class="case-section" aria-labelledby="integration-title">
+      <p class="eyebrow">04 / IDENTITY & EXTERNAL SYSTEMS</p><h2 id="integration-title">Beyond request and response.</h2>
+      <div class="case-columns"><div><h3>Authentication across layers</h3><p>Passport handles local credentials and Discord account linking. Passwords are hashed with bcrypt. The server includes Redis-backed sessions and JWT issuance; the React client carries bearer tokens through Axios and caches profile state in Redux.</p><p>This connects login screens to server middleware and user-owned resources, rather than treating authentication as a standalone form.</p><a class="text-link" href="https://github.com/kingslayerrq/my-web/blob/0167189858f31c9c3b05174c140699414607dbe8/server/middleware/passportMiddleware.mjs">Passport integration ↗</a></div><div><h3>A stateful Discord gateway</h3><p>The bot controller tracks gateway sequence numbers and session IDs, sends heartbeats, handles reconnect signals, and includes a resume path. A browser-facing WebSocket relays events into a log console with selectable details.</p><p>A separate API interceptor handles Discord rate limits using the server’s retry delay. These paths are present in source; a live bot connection was not exercised for this reconstruction.</p><a class="text-link" href="https://github.com/kingslayerrq/my-web/blob/0167189858f31c9c3b05174c140699414607dbe8/server/controllers/discordController.mjs">Gateway controller ↗</a></div></div>
+    </section>
+    <section class="case-section" aria-labelledby="reflection-title">
+      <p class="eyebrow">05 / ENGINEERING REFLECTION</p><h2 id="reflection-title">The next iteration has clear boundaries.</h2>
+      <div class="reflection-grid"><article><span class="accent">01</span><h3>Coordinate storage failures</h3><p>The upload controller attempts S3 cleanup on error. A next iteration would await cleanup explicitly and make retries idempotent, because a SQL transaction cannot roll back object storage.</p></article><article><span class="accent">02</span><h3>Enforce file access at storage</h3><p>The data model has visibility and download flags, but the original S3 uploader uses public-read objects. Private objects and authorized download URLs would align storage access with those flags.</p></article><article><span class="accent">03</span><h3>Isolate infrastructure in tests</h3><p>The existing Jest suites cover controllers, API wrappers, and retry handling. Injecting service clients and closing them during teardown would let tests finish independently of Redis.</p></article></div>
+      <div class="verification"><h3>What was verified locally</h3><p>The original React production build and ESLint check completed. All 41 assertions across four Jest suites passed after generating Prisma’s client, but the test command exited unsuccessfully when its Redis connection failed after teardown. The build also reports a missing stylesheet reference and a large JavaScript chunk.</p><p>The catalog and publishing form were inspected in the original client using a small local fixture API. PostgreSQL persistence, S3 uploads, production authentication, and live Discord connectivity remain unverified in this reconstruction.</p></div>
+    </section>
+    <div class="case-end"><h2>Games are the subject.<br><em>Systems are the work.</em></h2><a class="button primary" href="projects.html">Explore more projects ←</a></div>
+  </main>
+
+  <footer class="site-footer wrap" id="contact">
+    <div class="footer-heading"><p class="eyebrow">LET’S CONNECT</p><a class="footer-email" href="mailto:rq2014@nyu.edu">rq2014@nyu.edu <span aria-hidden="true">↗</span></a><p>Games, software, or something in between.</p></div>
+    <div class="footer-links"><a href="https://github.com/kingslayerrq">GitHub / Kingslayerrq ↗</a><a href="https://discord.com/users/1225896471812112426">Discord ID: 1225896471812112426 ↗</a></div>
+    <div class="footer-bottom"><span>vibe coded by Kingslayerrq</span><span>Richard Qu · <span class="accent">a presence in the wired</span></span><a href="#main">Back to top ↑</a></div>
+  </footer>
+</body>
+</html>
+

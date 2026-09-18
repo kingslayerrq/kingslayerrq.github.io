@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="{{description}}">
+  <meta name="color-scheme" content="dark light">
+  <title>{{title}}</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body class="{{body_class}}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header wrap">
+    <a class="brand" href="index.html" aria-label="{{name}}, home"><span class="brand-mark">rq<span>_</span></span><span>{{handle}}<small>PERSONAL NODE / 001</small></span></a>
+    <nav aria-label="Main navigation"><a href="index.html#about">About</a><a href="projects.html">Projects</a><a href="index.html#contact">Contact</a></nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to light mode"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Light mode</span></button>
+  </header>
+  {{body}}
+  <footer class="site-footer wrap" id="contact">
+    <div class="footer-heading"><p class="eyebrow">LET’S CONNECT</p><a class="footer-email" href="mailto:{{email}}">{{email}} <span aria-hidden="true">↗</span></a><p>Games, software, or something in between.</p></div>
+    <div class="footer-links"><a href="{{github}}">GitHub / {{handle}} ↗</a><a href="https://discord.com/users/{{discord_id}}">Discord ID: {{discord_id}} ↗</a></div>
+    <div class="footer-bottom"><span>{{footer_credit}}</span><span>Richard Qu · <span class="accent">a presence in the wired</span></span><a href="#main">Back to top ↑</a></div>
+  </footer>
+</body>
+</html>
+

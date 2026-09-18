@@ -1,0 +1,71 @@
+[
+  {
+    "id": "spire",
+    "title": "Slay the Spire Clone",
+    "category": "Game development",
+    "summary": "A deckbuilding combat project built around composable actions, event hooks, and data-driven rules.",
+    "tags": ["C#", "Unity", "Gameplay systems"],
+    "image": "assets/spire.jpg",
+    "image_alt": "Card-driven combat in the Slay the Spire clone",
+    "url": "slay-the-spire.html",
+    "link_label": "Read case study",
+    "featured": true,
+    "page": "slay-the-spire"
+  },
+  {
+    "id": "my-web",
+    "title": "GameDev Hub",
+    "category": "Full-stack development",
+    "summary": "A platform connecting game discovery, publishing workflows, and developer communities.",
+    "tags": ["React", "Express", "PostgreSQL"],
+    "image": "assets/my-web-catalog.png",
+    "image_alt": "GameDev Hub catalog reconstructed locally with sample records",
+    "url": "my-web.html",
+    "link_label": "Read case study",
+    "featured": true,
+    "page": "my-web"
+  },
+  {
+    "id": "balatro",
+    "title": "Balatro Clone",
+    "category": "Game development",
+    "summary": "A Unity study in poker-hand evaluation, staged scoring, and responsive card presentation.",
+    "tags": ["C#", "Unity", "Data structures"],
+    "image": "assets/balatro.jpg",
+    "image_alt": "Poker cards and scoring in the Balatro clone",
+    "url": "balatro.html",
+    "link_label": "Explore project",
+    "featured": true,
+    "page": "balatro"
+  },
+  {
+    "id": "balatro-ai",
+    "title": "Balatro AI",
+    "category": "Machine learning",
+    "summary": "A Gymnasium environment and socket bridge that give a PPO agent a structured way to interact with Balatro.",
+    "tags": ["Python", "Gymnasium", "PPO"],
+    "url": "https://github.com/kingslayerrq/balatro-ai",
+    "link_label": "View repository",
+    "featured": false
+  },
+  {
+    "id": "last-seen",
+    "title": "Last Seen",
+    "category": "Software engineering",
+    "summary": "A BetterDiscord plugin with local presence history, defensive event parsing, and a separately tested core.",
+    "tags": ["JavaScript", "Persistence", "Testing"],
+    "url": "https://github.com/kingslayerrq/discord-last-login",
+    "link_label": "View repository",
+    "featured": false
+  },
+  {
+    "id": "ai-search",
+    "title": "Search under constraints",
+    "category": "Computer science",
+    "summary": "Iterative deepening and hill climbing with random restarts for a budget-constrained search problem.",
+    "tags": ["Python", "Search", "Algorithms"],
+    "url": "https://github.com/kingslayerrq/AI-search",
+    "link_label": "View repository",
+    "featured": false
+  }
+]
