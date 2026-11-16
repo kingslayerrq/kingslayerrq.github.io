@@ -128,19 +128,17 @@ pre code { display: block; padding: 0; color: var(--green); background: none; fo
 .text-link:hover { color: var(--pink); }
 .private-label { font: 400 17px/1.2 var(--font-ui); letter-spacing: .05em; text-transform: uppercase; color: var(--dim); border: 1px dashed var(--line-2); padding: 4px 8px; }
 
-.badges { display: inline-flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
 .badge {
   display: inline-block;
-  padding: 4px 7px 3px;
-  border: 1px solid currentColor;
-  font: 400 10px/1.2 var(--font-display);
+  padding: 3px 6px 2px;
+  border: 1px solid var(--line-2);
+  color: var(--muted);
+  font: 400 9px/1.2 var(--font-display);
   letter-spacing: .06em;
   text-transform: uppercase;
   white-space: nowrap;
 }
-.badge-hand { color: var(--cyan); background: rgba(61, 242, 224, .1); }
-.badge-ai { color: var(--amber); background: rgba(255, 200, 87, .1); }
-.badge-extra { color: var(--amber); border-style: dashed; background: none; }
+.eyebrow .badge { margin-right: 10px; vertical-align: 2px; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tags span { padding: 2px 8px; border: 1px solid var(--line); background: var(--bg-2); color: var(--muted); font: 400 16px/1.35 var(--font-ui); letter-spacing: .04em; text-transform: uppercase; }
@@ -157,7 +155,7 @@ pre code { display: block; padding: 0; color: var(--green); background: none; fo
 .hud nav a:hover { color: var(--ink); border-color: var(--line-2); }
 .home-page .hud nav a[data-nav="home"],
 .projects-page .hud nav a[data-nav="projects"],
-.case-page .hud nav a[data-nav="projects"] { color: var(--bg); background: var(--cyan); }
+.recipe-page .hud nav a[data-nav="projects"] { color: var(--bg); background: var(--cyan); }
 .hud-status { display: flex; align-items: center; gap: 14px; font: 400 18px/1 var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .hud-open { display: inline-flex; align-items: center; gap: 6px; color: var(--green); }
 .hud-open i, .rec i { width: 8px; height: 8px; background: currentColor; box-shadow: 0 0 8px currentColor; animation: pulse 1.6s steps(2) infinite; }
@@ -196,24 +194,13 @@ pre code { display: block; padding: 0; color: var(--green); background: none; fo
 .dialogue-next:hover { border-color: var(--cyan); color: var(--ink); }
 .dialogue-next span { display: inline-block; animation: bob 1s steps(2) infinite; }
 
-/* Legend ---------------------------------------------------------------- */
-.legend { margin-top: 44px; padding: 18px 22px; border: 2px dashed var(--line-2); background: rgba(23, 16, 51, .7); }
-.legend h2 { font: 400 19px/1.2 var(--font-ui); letter-spacing: .08em; }
-.legend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 32px; }
-.legend-grid p { margin: 0; font-size: 14px; color: var(--muted); }
-.legend-grid .badge { margin-right: 8px; }
-
 /* Menu sections and cards ----------------------------------------------- */
 .menu-section { margin-top: 76px; }
 .section-head { margin-bottom: 26px; padding-bottom: 14px; border-bottom: 2px solid var(--line); }
 .section-head p:last-child { margin: 10px 0 0; color: var(--muted); max-width: 62ch; }
-.ai-section .section-head .eyebrow { color: var(--amber); }
-.ai-section .title-dot { color: var(--amber); }
 .drink-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
 .drink { display: flex; flex-direction: column; --drink: var(--magenta); }
 .drink[data-track="software"] { --drink: var(--cyan); --garnish: var(--pink); }
-.drink[data-build="ai"] { border-color: #8a6f3a; }
-.drink[data-build="ai"] .win-bar { background: linear-gradient(90deg, #33260f, #5a4319 55%, #33260f); border-bottom-color: #8a6f3a; }
 .drink-visual { display: block; margin: 0 2px; background: var(--bg-2); border-bottom: 2px solid var(--line-2); aspect-ratio: 16 / 9; overflow: hidden; position: relative; text-decoration: none; }
 .drink-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform .25s steps(4); }
 a.drink-visual:hover img { transform: scale(1.04); }
@@ -234,7 +221,6 @@ a.drink-visual:hover img { transform: scale(1.04); }
 .drink-summary { margin: 0; color: var(--muted); font-size: 14px; }
 .drink-role { margin: 0; font-size: 13px; color: var(--ink); }
 .drink-role b { margin-right: 8px; font: 400 17px/1 var(--font-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--cyan); }
-.build-note { margin: 0; padding: 8px 10px; border-left: 3px solid var(--amber); background: rgba(255, 200, 87, .07); color: var(--muted); font-size: 12.5px; line-height: 1.55; }
 .drink-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: auto; padding-top: 6px; }
 @media (min-width: 861px) {
   .drink-grid.lead-first > .drink:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); grid-template-rows: auto 1fr; }
@@ -292,14 +278,12 @@ a.drink-visual:hover img { transform: scale(1.04); }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; margin-top: 26px; font: 400 17px/1.3 var(--font-ui); letter-spacing: .05em; text-transform: uppercase; color: var(--dim); }
 .footer-bottom a { color: var(--muted); }
 
-/* Case studies ---------------------------------------------------------- */
-.case-study { padding-top: 46px; }
+/* Recipe pages ---------------------------------------------------------- */
+.recipe { padding-top: 46px; }
 .case-hero { padding-bottom: 28px; }
 .case-hero > .text-link { display: inline-block; margin-bottom: 26px; }
 .case-hero h1 { font-size: clamp(30px, 5.4vw, 56px); }
 .case-hero .tags, .case-hero .project-links { margin-top: 20px; }
-.case-badge { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 20px 0 0; }
-.case-badge .build-note { flex: 1 1 320px; }
 .project-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; }
 .project-media, .case-shot { margin: 8px 0 0; background: var(--panel); border: 2px solid var(--line-2); box-shadow: inset 0 0 0 2px var(--bg), 6px 6px 0 var(--shadow); padding: 2px; }
 .media-label { display: flex; justify-content: space-between; gap: 12px; padding: 8px 12px; background: linear-gradient(90deg, #2a1e5c, #46308f 55%, #2a1e5c); border-bottom: 2px solid var(--line-2); font: 400 11px/1.3 var(--font-display); letter-spacing: .06em; text-transform: uppercase; }
@@ -434,7 +418,7 @@ a.drink-visual:hover img { transform: scale(1.04); }
 }
 @media (max-width: 860px) {
   .stage { grid-template-columns: minmax(0, 1fr); }
-  .drink-grid, .legend-grid, .case-columns, .case-overview, .case-code, .code-body, .lastcall-body { grid-template-columns: minmax(0, 1fr); }
+  .drink-grid, .case-columns, .case-overview, .case-code, .code-body, .lastcall-body { grid-template-columns: minmax(0, 1fr); }
   .pipeline, .damage-trace, .arch-services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .reflection-grid, .ingredients, .shift-log, .sheet-grid { grid-template-columns: minmax(0, 1fr); }
   .architecture { grid-template-columns: minmax(0, 1fr); }

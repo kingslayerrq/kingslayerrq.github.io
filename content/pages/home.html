@@ -24,7 +24,7 @@
       <p class="dialogue-speaker">Richard</p>
       <div class="dialogue-lines">
         <p>Welcome in. I’m Richard — I build gameplay systems and the software around them.</p>
-        <p>The menu is split in two: what I wrote by hand, and what I built with AI agents. Every pour is labeled.</p>
+        <p>Every project on the menu is a drink I mixed. The bigger ones come with a recipe — what went in, and how it was put together.</p>
         <p>House specials first — a deckbuilder combat engine, a poker roguelike, and a full-stack platform for publishing games.</p>
         <p>Pull up a stool, or skip the small talk and head straight to the menu.</p>
       </div>
@@ -32,27 +32,14 @@
     </div>
   </section>
 
-  <section class="legend wrap" aria-labelledby="legend-title">
-    <h2 class="eyebrow" id="legend-title">How to read the labels</h2>
-    <div class="legend-grid">
-      <p><span class="badge badge-hand">Hand-coded</span> I wrote the code myself. Listed first, because it shows how I think.</p>
-      <p><span class="badge badge-ai">AI-assisted</span> Built with coding agents such as Claude Code or Codex. Listed second, and always marked.</p>
-    </div>
-  </section>
-
-  <section class="menu-section wrap" id="menu" aria-labelledby="hand-title">
-    <div class="section-head"><p class="eyebrow">01 / House specials</p><h2 id="hand-title">Hand-coded<span class="title-dot">.</span></h2><p>Gameplay systems and software I wrote myself.</p></div>
-    <div class="drink-grid lead-first">{{home_hand}}</div>
-  </section>
-
-  <section class="menu-section ai-section wrap" aria-labelledby="ai-title">
-    <div class="section-head"><p class="eyebrow">02 / Machine-assisted</p><h2 id="ai-title">Built with AI<span class="title-dot">.</span></h2><p>Larger systems shipped with coding agents. Same engineer, different tools.</p></div>
-    <div class="drink-grid">{{home_ai}}</div>
-    <p class="menu-more"><a class="button primary" href="projects.html">Full menu [{{project_count}}] <span aria-hidden="true">→</span></a><span>{{hand_count}} hand-coded · {{ai_count}} AI-assisted</span></p>
+  <section class="menu-section wrap" id="menu" aria-labelledby="specials-title">
+    <div class="section-head"><p class="eyebrow">01 / On the menu</p><h2 id="specials-title">House specials<span class="title-dot">.</span></h2><p>Gameplay systems, full-stack software, and the tools around them.</p></div>
+    <div class="drink-grid lead-first">{{home_featured}}</div>
+    <p class="menu-more"><a class="button primary" href="projects.html">Full menu [{{project_count}}] <span aria-hidden="true">→</span></a></p>
   </section>
 
   <section class="menu-section wrap" id="experience" aria-labelledby="experience-title">
-    <div class="section-head"><p class="eyebrow">03 / Shift log</p><h2 id="experience-title">Experience<span class="title-dot">.</span></h2></div>
+    <div class="section-head"><p class="eyebrow">02 / Shift log</p><h2 id="experience-title">Experience<span class="title-dot">.</span></h2></div>
     <div class="shift-log">
       <article class="win shift">
         <div class="win-bar"><span>Sep 2025 – Jan 2026</span><span>New York, NY</span></div>
@@ -69,7 +56,7 @@
     <div class="win">
       <div class="win-bar"><span>Behind the counter <i aria-hidden="true">//</i> About</span><span aria-hidden="true">_ □ ×</span></div>
       <div class="about-body">
-        <div class="about-copy"><p class="eyebrow">04 / The bartender</p><h2 id="about-title">Systems on tap<span class="title-dot">.</span></h2><p>{{bio}}</p><p>{{interests}}</p><p>I came to games from computer science, and I like building systems that make game development smoother. I want to make games that feel unique, strange, and memorable.</p></div>
+        <div class="about-copy"><p class="eyebrow">03 / The bartender</p><h2 id="about-title">Systems on tap<span class="title-dot">.</span></h2><p>{{bio}}</p><p>{{interests}}</p><p>I came to games from computer science, and I like building systems that make game development smoother. I want to make games that feel unique, strange, and memorable.</p></div>
         <div class="ingredients" aria-label="Skills by area">
           <article><h3>Gameplay</h3><ul><li>C# · Unity 6 (URP)</li><li>Unreal Engine</li><li>ScriptableObject architecture</li><li>Custom editor tooling</li><li>AR Foundation · ARKit · ARCore</li><li>Lua (Playdate) · GameMaker</li></ul></article>
           <article><h3>Software</h3><ul><li>TypeScript · JavaScript · Python</li><li>React · Node.js · Express</li><li>PostgreSQL · Prisma</li><li>MongoDB · Redis</li><li>Docker · GitHub Actions</li><li>Java</li></ul></article>
@@ -83,7 +70,7 @@
     <div class="win">
       <div class="win-bar"><span>Patron file <i aria-hidden="true">//</i> Character sheet</span><span aria-hidden="true">LV. 01</span></div>
       <div class="sheet-body">
-        <div class="sheet-head"><div><p class="eyebrow">05 / Off the clock</p><h2 id="sheet-title">Character sheet<span class="title-dot">.</span></h2></div><dl class="sheet-facts"><div><dt>Name</dt><dd>Ruizhe “Richard” Qu</dd></div><div><dt>Pronouns</dt><dd>He / Him</dd></div><div><dt>Hometown</dt><dd>Shanghai, China</dd></div><div><dt>Usual order</dt><dd>Dark roast coffee</dd></div></dl></div>
+        <div class="sheet-head"><div><p class="eyebrow">04 / Off the clock</p><h2 id="sheet-title">Character sheet<span class="title-dot">.</span></h2></div><dl class="sheet-facts"><div><dt>Name</dt><dd>Ruizhe “Richard” Qu</dd></div><div><dt>Pronouns</dt><dd>He / Him</dd></div><div><dt>Hometown</dt><dd>Shanghai, China</dd></div><div><dt>Usual order</dt><dd>Dark roast coffee</dd></div></dl></div>
         <div class="sheet-grid">
           <article class="sheet-card"><h3>Core stats</h3>
             <dl class="pips">

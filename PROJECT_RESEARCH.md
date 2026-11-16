@@ -20,7 +20,7 @@ Entries marked *inferred* rest on signal 3 only. Changing a label is a one-field
 | Project | Repository | Track | Basis |
 | --- | --- | --- | --- |
 | Slay the Spire Clone | `Unity-2D` | Gameplay | **Owner-confirmed.** 39 solo commits, Mar–Nov 2026. |
-| Balatro Clone | `Balatro-Clone` | Gameplay | **Owner-confirmed.** 20 hand commits, Mar–Jun 2025. AI was used only for a recent refactor (pull request #1, Nov 2026), noted in the case study. |
+| Balatro Clone | `Balatro-Clone` | Gameplay | **Owner-confirmed.** 20 hand commits, Mar–Jun 2025. AI was used only for a recent refactor (pull request #1, Nov 2026), noted at the end of its recipe page. |
 | UnderWatch | `Booomjam2026` | Gameplay | **Owner-confirmed:** Richard wrote most of the code himself (32 of 39 commits). The repository does contain a `CLAUDE.md`. |
 | GameDev Hub | `my-web` | Software | 143 solo commits, Nov 2024–Feb 2025, no agent files or trailers. |
 | Multithreaded Run-Length Encoder | `lab3`, `lab4` | Software | NYU Operating Systems labs, late 2023: pthread worker pool; FAT32 recovery tool. |
@@ -75,6 +75,6 @@ Experience, education, skills, certification, and the Overwatch line come from R
 ## Source notes
 
 - Balatro excerpt pinned to commit `437cb76`, which predates the refactor.
-- Slay the Spire case study describes commit `5996ab8`; the repository is now public.
-- GameDev Hub case study describes commit `0167189`; its cloud deployment is offline. See `MY_WEB_REVIEW.md`.
+- Slay the Spire recipe page describes commit `5996ab8`; the repository is now public.
+- GameDev Hub recipe page describes commit `0167189`; its cloud deployment is offline. See `MY_WEB_REVIEW.md`.
 - No claims of production adoption, measured AI win rates, or feature parity with commercial games are made beyond what the résumé states.

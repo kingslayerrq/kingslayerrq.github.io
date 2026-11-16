@@ -1,4 +1,4 @@
-"""Protect content authoring, provenance labels, and the static publication boundary."""
+"""Protect content authoring, build tags, and the static publication boundary."""
 import copy
 import json
 from pathlib import Path
@@ -55,34 +55,31 @@ class ContentBuildTests(unittest.TestCase):
         self.assertNotIn("<script>", card)
         self.assertIn("&lt;script&gt;", card)
 
-    def test_hand_coded_work_is_listed_before_ai_assisted_work(self):
-        for tier in ("feature", "small"):
-            builds = [p["build"] for p in display_order(self.projects) if p["tier"] == tier]
-            self.assertEqual(builds, sorted(builds, key=lambda build: build != "hand"), tier)
+    def test_projects_are_grouped_by_role_not_by_how_they_were_built(self):
+        tiers = [p["tier"] for p in display_order(self.projects)]
+        self.assertEqual(tiers, sorted(tiers, key=lambda tier: tier != "feature"))
         outputs = build_outputs()
-        for page in ("index.html", "projects.html"):
-            for kind in ("drink win", "pour"):
-                builds = re.findall('class="' + kind + '" id="[^"]+" data-track="[^"]+" data-build="([a-z]+)"', outputs[page])
-                self.assertEqual(builds, sorted(builds, key=lambda build: build != "hand"), page + " " + kind)
-            self.assertIn('data-build="hand"', outputs[page])
-            self.assertIn('data-build="ai"', outputs[page])
+        for name, page in outputs.items():
+            text = page.lower()
+            for phrase in ("case study", "case-study", "ai-title", "how to read the labels", "data-build"):
+                self.assertNotIn(phrase, text, name)
 
-    def test_every_entry_is_labeled_on_the_menu(self):
+    def test_every_entry_carries_one_small_build_tag(self):
         menu = build_outputs()["projects.html"]
         for project in self.projects:
             start = menu.index('id="' + project["id"] + '"')
-            entry = menu[start:start + 3000]
+            entry = menu[start:menu.index("</article>" if project["tier"] == "feature" else "</li>", start)]
             label = "Hand-coded" if project["build"] == "hand" else "AI-assisted"
-            self.assertIn('badge-' + project["build"] + '">' + label, entry, project["id"])
+            self.assertEqual(entry.count('class="badge"'), 1, project["id"])
+            self.assertIn(">" + label + "</span>", entry, project["id"])
 
     def test_home_stays_light_and_pages_share_contact_details(self):
         outputs = build_outputs()
-        self.assertIn("How to read the labels", outputs["index.html"])
         self.assertNotIn("<video", outputs["index.html"])
         for project in self.projects:
             if project.get("page"):
                 page = outputs[project["page"] + ".html"]
-                self.assertIn('class="case-badge"', page)
+                self.assertRegex(page, r'<p class="eyebrow accent"><span class="badge">[^<]+</span>Recipe No\.\d\d / ' + re.escape(project["drink"].replace("&", "&amp;")))
         for page in outputs.values():
             self.assertIn("vibe coded by Kingslayerrq", page)
             self.assertIn("1225896471812112426", page)

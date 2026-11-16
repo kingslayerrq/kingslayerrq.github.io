@@ -20,7 +20,7 @@
     "image": "assets/spire.jpg",
     "image_alt": "Card-driven combat in the Slay the Spire clone",
     "url": "slay-the-spire.html",
-    "link_label": "Read case study",
+    "link_label": "See the recipe",
     "links": [
       {
         "label": "Source",
@@ -28,7 +28,8 @@
       }
     ],
     "featured": true,
-    "page": "slay-the-spire"
+    "page": "slay-the-spire",
+    "drink": "Deck & Tonic"
   },
   {
     "id": "balatro",
@@ -50,7 +51,7 @@
     "image": "assets/balatro.jpg",
     "image_alt": "Poker cards and scoring in the Balatro clone",
     "url": "balatro.html",
-    "link_label": "Read case study",
+    "link_label": "See the recipe",
     "links": [
       {
         "label": "Source",
@@ -58,7 +59,8 @@
       }
     ],
     "featured": true,
-    "page": "balatro"
+    "page": "balatro",
+    "drink": "Flush Fizz"
   },
   {
     "id": "underwatch",
@@ -106,7 +108,7 @@
     "image": "assets/my-web-catalog.png",
     "image_alt": "GameDev Hub catalog reconstructed locally with sample records",
     "url": "my-web.html",
-    "link_label": "Read case study",
+    "link_label": "See the recipe",
     "links": [
       {
         "label": "Source",
@@ -114,7 +116,8 @@
       }
     ],
     "featured": true,
-    "page": "my-web"
+    "page": "my-web",
+    "drink": "Full-Stack Sling"
   },
   {
     "id": "systems-c",

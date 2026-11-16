@@ -1,10 +1,9 @@
-<main id="main" class="case-study wrap">
+<main id="main" class="recipe wrap">
   <section class="case-hero" aria-labelledby="case-title">
     <a class="text-link" href="projects.html#balatro">← Back to the menu</a>
-    <p class="eyebrow accent">Case study / Gameplay systems / Balatro-Clone</p>
+    <p class="eyebrow accent">{{recipe_head}} / Gameplay systems / Balatro-Clone</p>
     <h1 id="case-title">Score a hand.<br><em>Show the math.</em></h1>
     <p class="case-lead">A Unity recreation of a poker roguelike’s core loop, built to study how hand evaluation, staged scoring, and card presentation fit together.</p>
-    {{case_badge}}
     <div class="tags"><span>C# · Unity</span><span>Data structures</span><span>Coroutines</span><span>ScriptableObjects</span><span>Shaders</span></div>
     <div class="project-links"><a class="text-link" href="https://github.com/kingslayerrq/Balatro-Clone">View repository ↗</a><a class="text-link" href="#code-balatro">Inside the code ↓</a></div>
   </section>
@@ -24,11 +23,7 @@
 }
 
 curScore = curChips * curMults;</code></pre></div></details>
-  <section class="case-section" id="provenance" aria-labelledby="provenance-title">
-    <p class="eyebrow">02 / Build notes</p><h2 id="provenance-title">Hand-built. Recently refactored.</h2>
-    <div class="case-columns"><div><h3>Written by hand · March–June 2025</h3><p>The game itself: card and deck data, hand analysis, the scoring sequence, round, run, and ante managers, panels, audio, and the card visuals. The excerpt above is pinned to that hand-written code.</p></div><div><h3>Refactor pass · November 2026</h3><p>A recent cleanup pull request, done with Claude Code as an assistant: hand evaluation extracted into a pure <code>HandEvaluator</code> with EditMode tests, card movement and round flow reworked, singleton and dead-code cleanup, and the upgrade to Unity 6000.3 / URP 17.3.</p></div></div>
-    <p class="case-note">Source: commit history of Balatro-Clone. The refactor arrived as pull request #1 from the <code>claude/refactor</code> branch.</p>
-  </section>
+  <p class="case-note">Built March–June 2025. A November 2026 cleanup pull request (a pure <code>HandEvaluator</code> with EditMode tests, reworked card movement and round flow, and the Unity 6000.3 upgrade) was done with Claude Code as an assistant.</p>
   <div class="case-end"><h2>Simple rules.<br><em>Visible math.</em></h2><a class="button primary" href="projects.html">Back to the menu ←</a></div>
   <p class="project-note">An educational recreation inspired by Balatro. Original game names and third-party artwork belong to their respective creators. Footage shows a development build.</p>
 </main>

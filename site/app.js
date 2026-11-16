@@ -77,15 +77,14 @@ if (dialogue) {
 // Project filters on the menu page.
 const filters = document.querySelector('[data-filters]');
 if (filters) {
-  const state = { track: 'all', build: 'all' };
-  const items = [...document.querySelectorAll('[data-track][data-build]')];
+  let track = 'all';
+  const items = [...document.querySelectorAll('[data-track]')];
   const groups = [...document.querySelectorAll('[data-group]')];
   const count = filters.querySelector('[data-filter-count]');
   const apply = () => {
     let visible = 0;
     items.forEach(item => {
-      const match = (state.track === 'all' || item.dataset.track === state.track)
-        && (state.build === 'all' || item.dataset.build === state.build);
+      const match = track === 'all' || item.dataset.track === track;
       item.hidden = !match;
       if (match) visible += 1;
     });
@@ -94,8 +93,7 @@ if (filters) {
   };
   filters.querySelectorAll('button').forEach(button => {
     button.addEventListener('click', () => {
-      if ('filterTrack' in button.dataset) state.track = button.dataset.filterTrack;
-      else state.build = button.dataset.filterBuild;
+      track = button.dataset.filterTrack;
       button.parentElement.querySelectorAll('button').forEach(other => {
         other.setAttribute('aria-pressed', String(other === button));
       });
@@ -106,7 +104,7 @@ if (filters) {
   apply();
 }
 
-// Case studies: open linked code disclosures and keep one video playing at a time.
+// Recipe pages: open linked code disclosures and keep one video playing at a time.
 function openLinkedDetails() {
   const target = document.getElementById(window.location.hash.slice(1));
   if (target instanceof HTMLDetailsElement) target.open = true;

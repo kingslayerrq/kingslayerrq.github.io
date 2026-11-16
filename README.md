@@ -1,6 +1,6 @@
 # Richard Qu / Kingslayerrq — portfolio
 
-A recruiter-facing portfolio for software and gameplay engineering roles, styled as a late-night cyberpunk bar terminal: pixel-window panels, a visual-novel dialogue box, and projects presented as a menu. Every project is labeled **Hand-coded** or **AI-assisted**, and hand-coded work is always listed first.
+A recruiter-facing portfolio for software and gameplay engineering roles, styled as a late-night cyberpunk bar terminal: pixel-window panels, a visual-novel dialogue box, and projects presented as a menu. Projects are grouped by role (gameplay or software); each carries one small **Hand-coded** or **AI-assisted** tag, and the larger ones link to a recipe page.
 
 The site uses a small Python standard-library generator. Its output is ordinary static HTML, CSS, and JavaScript in `site/`, compatible with free GitHub Pages hosting. No npm dependencies, backend, framework, or API key are required.
 
@@ -20,7 +20,7 @@ npm run lint
 npm test
 ```
 
-`lint` checks JavaScript syntax, stale generated HTML, balanced HTML, local assets/links and cross-page anchors, duplicate IDs, image alternative text, and GitHub file-size limits. Tests cover the effects preference, metadata escaping, invalid project configuration, **required provenance labels, and hand-coded-before-AI ordering**.
+`lint` checks JavaScript syntax, stale generated HTML, balanced HTML, local assets/links and cross-page anchors, duplicate IDs, image alternative text, and GitHub file-size limits. Tests cover the effects preference, metadata escaping, invalid project configuration, required build tags, and recipe-page headers.
 
 There is no automatic file watcher. CSS and JavaScript edits require only a refresh.
 
@@ -30,12 +30,12 @@ There is no automatic file watcher. CSS and JavaScript edits require only a refr
 | --- | --- |
 | `content/profile.json` | Name, handle, role, biography, contact details, and footer credit |
 | `content/projects.json` | Every project: text, tags, role, links, and its `build` / `track` / `tier` labels |
-| `content/pages/home.html` | Homepage: hero, dialogue lines, label legend, experience, about, character sheet |
+| `content/pages/home.html` | Homepage: hero, dialogue lines, featured projects, experience, about, character sheet |
 | `content/pages/projects.html` | Full menu layout and filters |
-| `content/pages/<project>.html` | Case-study content, diagrams, media, and source excerpts |
+| `content/pages/<project>.html` | Recipe pages: a project's deep dive with diagrams, media, and source excerpts |
 | `content/art/bar-scene.svg` | Generated pixel-art scene (do not edit by hand; see below) |
 | `templates/layout.html` | Shared head, status bar, glass sprites, and footer for every page |
-| `site/styles.css` | Design tokens, window/panel components, case-study styles, responsive layouts |
+| `site/styles.css` | Design tokens, window/panel components, recipe-page styles, responsive layouts |
 | `site/fx.js`, `site/app.js` | CRT effects preference, dialogue box, clock, filters, video coordination |
 | `scripts/build_site.py` | Generator, project schema checks, and display ordering |
 | `scripts/make_scene.py` | Regenerates `content/art/bar-scene.svg` |
@@ -64,9 +64,8 @@ There is no automatic file watcher. CSS and JavaScript edits require only a refr
 
 | Field | Values | Effect |
 | --- | --- | --- |
-| `build` | `hand` or `ai` | The badge on the card. Required; the build fails without it. Hand-coded entries always sort first. |
-| `build_note` | text, optional | Short provenance note shown on the card, e.g. which agent was used. |
-| `build_extra` | text, optional | A second, dashed badge for mixed cases such as a later AI refactor. |
+| `build` | `hand` or `ai` | The small tag on the card and recipe page. Required; the build fails without it. It does not affect ordering. |
+| `build_note` | text, optional | Shown only as the tag's tooltip, e.g. which agent was used. |
 | `track` | `gameplay` or `software` | Section on the menu page, filter value, and glass sprite. |
 | `tier` | `feature` or `small` | Full card, or a compact row under “Small pours”. |
 | `featured` | `true` or `false` | Also show the card on the homepage. |
@@ -74,9 +73,9 @@ There is no automatic file watcher. CSS and JavaScript edits require only a refr
 | `links` | list of `{label, url}`, optional | Secondary links such as source or a live build. |
 | `image`, `image_alt` | optional | Screenshot in `site/assets/`, ideally 1280×720. |
 | `snippet` | `{label, code}`, optional | A real code excerpt shown instead of a screenshot. Used when there is no image; with neither, the card shows a pixel glass. |
-| `page` | optional | Case-study page name; `url` must be `<page>.html` and `content/pages/<page>.html` must exist. |
+| `page` | optional | Recipe page name; `url` must be `<page>.html` and `content/pages/<page>.html` must exist. |
 
-To change how a project is labeled, edit `build` (and `build_note`) and rebuild. To add a case study, copy `content/pages/_case-study-template.html`; keep the `{{case_badge}}` token so the label appears on the page.
+Cards appear in the order of `projects.json` (features before small entries). To add a recipe page, copy `content/pages/_recipe-template.html`, set `page` and an optional `drink` name on the project, and keep the `{{recipe_head}}` token: it prints the build tag, menu number, and drink name at the top of the page.
 
 ## The pixel scene
 

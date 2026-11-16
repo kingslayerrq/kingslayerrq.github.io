@@ -42,7 +42,6 @@ def validate_projects(projects, root=ROOT):
         for field in required:
             if not isinstance(project.get(field), str) or not project[field].strip():
                 raise ValueError(f"{slug}: {field} must be a nonempty string")
-        # Provenance is a promise to the reader, so every entry must declare it.
         if project.get("build") not in BUILD_LABELS:
             raise ValueError(f"{slug}: build must be one of {sorted(BUILD_LABELS)}")
         if project.get("track") not in TRACK_LABELS:
@@ -70,29 +69,30 @@ def validate_projects(projects, root=ROOT):
             snippet = project["snippet"]
             if not all(isinstance(snippet.get(key), str) and snippet[key].strip() for key in ("label", "code")):
                 raise ValueError(f"{slug}: snippet needs a label and code")
+        if "drink" in project and not (isinstance(project["drink"], str) and project["drink"].strip()):
+            raise ValueError(f"{slug}: drink must be a nonempty string")
         if "page" in project:
             page = project["page"]
             if not re.fullmatch(SLUG, page) or page in pages or page in {"index", "projects"}:
                 raise ValueError(f"Invalid or duplicate project page: {page}")
             pages.add(page)
             if project.get("url") != page + ".html":
-                raise ValueError(f"{slug}: url must match the case-study page")
+                raise ValueError(f"{slug}: url must match the recipe page")
             if not (root / "content" / "pages" / (page + ".html")).is_file():
-                raise ValueError(f"{slug}: missing case-study content")
+                raise ValueError(f"{slug}: missing recipe page content")
         elif project.get("url") and not urlsplit(project["url"]).scheme:
             raise ValueError(f"{slug}: local links require a page field")
 
 
 def display_order(projects):
-    """Hand-coded work always comes before AI-assisted work; features before small entries."""
-    return sorted(projects, key=lambda p: (p["tier"] != "feature", p["build"] != "hand"))
+    """Features before small entries; otherwise the curated order of projects.json."""
+    return sorted(projects, key=lambda p: p["tier"] != "feature")
 
 
-def badges(project):
-    html = f'<span class="badge badge-{project["build"]}">{BUILD_LABELS[project["build"]]}</span>'
-    if project.get("build_extra"):
-        html += f'<span class="badge badge-extra">{escape(project["build_extra"])}</span>'
-    return html
+def build_tag(project):
+    """One small neutral tag per project; the optional note is only a tooltip."""
+    note = f' title="{escape(project["build_note"], quote=True)}"' if project.get("build_note") else ""
+    return f'<span class="badge"{note}>{BUILD_LABELS[project["build"]]}</span>'
 
 
 def link(label, url, css):
@@ -115,7 +115,7 @@ def tag_list(project):
 
 
 def data_attrs(project):
-    return f'id="{escape(project["id"], quote=True)}" data-track="{project["track"]}" data-build="{project["build"]}"'
+    return f'id="{escape(project["id"], quote=True)}" data-track="{project["track"]}"'
 
 
 def project_card(project, index):
@@ -139,11 +139,10 @@ def project_card(project, index):
         visual = f'<a class="{css}" href="{p["url"]}" aria-label="Open {p["title"]}">{visual}</a>'
     else:
         visual = f'<div class="{css}">{visual}</div>'
-    note = f'<p class="build-note">{p["build_note"]}</p>' if project.get("build_note") else ""
     return f'''<article class="drink win" {data_attrs(project)}>
-  <div class="win-bar"><span>No.{index:02d} <i aria-hidden="true">//</i> {track} <i aria-hidden="true">//</i> {p['year']}</span><span class="badges">{badges(project)}</span></div>
+  <div class="win-bar"><span>No.{index:02d} <i aria-hidden="true">//</i> {track} <i aria-hidden="true">//</i> {p['year']}</span>{build_tag(project)}</div>
   {visual}
-  <div class="drink-body"><h3>{title}</h3><p class="drink-summary">{p['summary']}</p><p class="drink-role"><b>Role</b> {p['role']}</p><div class="tags">{tag_list(project)}</div>{note}<div class="drink-links">{project_links(project, "button small")}</div></div>
+  <div class="drink-body"><h3>{title}</h3><p class="drink-summary">{p['summary']}</p><p class="drink-role"><b>Role</b> {p['role']}</p><div class="tags">{tag_list(project)}</div><div class="drink-links">{project_links(project, "button small")}</div></div>
 </article>'''
 
 
@@ -153,13 +152,14 @@ def project_row(project, index):
     return f'''<li class="pour" {data_attrs(project)}>
   <span class="pour-no">No.{index:02d}<small>{p['year']}</small></span>
   <div class="pour-main"><h3>{title}</h3><p>{p['summary']}</p><div class="tags">{tag_list(project)}</div></div>
-  <div class="pour-side"><span class="badges">{badges(project)}</span>{project_links(project, "text-link")}</div>
+  <div class="pour-side">{build_tag(project)}{project_links(project, "text-link")}</div>
 </li>'''
 
 
-def case_badge(project):
-    note = f'<span class="build-note">{escape(project["build_note"])}</span>' if project.get("build_note") else ""
-    return f'<p class="case-badge"><span class="badges">{badges(project)}</span>{note}</p>'
+def recipe_head(project, index):
+    """Opening of a recipe page's eyebrow: the build tag, the menu number, and the drink name."""
+    drink = f' / {escape(project["drink"])}' if project.get("drink") else ""
+    return f'{build_tag(project)}Recipe No.{index:02d}{drink}'
 
 
 def build_outputs(root=ROOT):
@@ -176,27 +176,23 @@ def build_outputs(root=ROOT):
     values = {key: escape(value, quote=True) for key, value in profile.items()}
     values.update(
         project_count=str(len(projects)),
-        hand_count=str(sum(p["build"] == "hand" for p in projects)),
-        ai_count=str(sum(p["build"] == "ai" for p in projects)),
-        home_hand=cards(lambda p: p["featured"] and p["build"] == "hand"),
-        home_ai=cards(lambda p: p["featured"] and p["build"] == "ai"),
-        menu_hand_gameplay=cards(lambda p: p in features and p["build"] == "hand" and p["track"] == "gameplay"),
-        menu_hand_software=cards(lambda p: p in features and p["build"] == "hand" and p["track"] == "software"),
-        menu_ai=cards(lambda p: p in features and p["build"] == "ai"),
+        home_featured=cards(lambda p: p["featured"]),
+        menu_gameplay=cards(lambda p: p in features and p["track"] == "gameplay"),
+        menu_software=cards(lambda p: p in features and p["track"] == "software"),
         menu_small="\n".join(project_row(p, number[p["id"]]) for p in ordered if p["tier"] == "small"),
         bar_scene=(root / "content/art/bar-scene.svg").read_text(encoding="utf-8").strip(),
-        case_badge="",
+        recipe_head="",
     )
     layout = (root / "templates/layout.html").read_text(encoding="utf-8")
     specs = [("index", "home", profile["name"] + " — " + profile["role"], profile["intro"], "home-page", ""),
              ("projects", "projects", "Projects — " + profile["name"],
-              "Gameplay and software engineering projects by " + profile["name"] + ", labeled hand-coded or AI-assisted.",
+              "Gameplay and software engineering projects by " + profile["name"] + ".",
               "projects-page", "")]
-    specs.extend((p["page"], p["page"], p["title"] + " — " + profile["name"], p["summary"], "case-page", case_badge(p))
+    specs.extend((p["page"], p["page"], p["title"] + " — " + profile["name"], p["summary"], "recipe-page", recipe_head(p, number[p["id"]]))
                  for p in projects if p.get("page"))
     outputs = {}
-    for filename, source, title, description, body_class, badge in specs:
-        page_values = {**values, "case_badge": badge}
+    for filename, source, title, description, body_class, head in specs:
+        page_values = {**values, "recipe_head": head}
         body = render((root / "content/pages" / (source + ".html")).read_text(encoding="utf-8"), page_values)
         page_values.update(body=body, title=escape(title), description=escape(description, quote=True), body_class=body_class)
         outputs[filename + ".html"] = render(layout, page_values)

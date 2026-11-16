@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Gameplay and software engineering projects by Richard Qu, labeled hand-coded or AI-assisted.">
+  <meta name="description" content="Gameplay and software engineering projects by Richard Qu.">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0b0817">
   <title>Projects — Richard Qu</title>
@@ -46,52 +46,56 @@
   <section class="page-hero" aria-labelledby="menu-title">
     <p class="eyebrow">Full menu / 17 entries</p>
     <h1 id="menu-title">The menu<span class="title-dot">.</span></h1>
-    <p class="case-lead">Hand-coded work first, AI-assisted work second, every entry labeled. 11 hand-coded · 6 AI-assisted.</p>
+    <p class="case-lead">Gameplay systems, full-stack software, and smaller experiments. The house specials come with a full recipe.</p>
     <div class="filters" data-filters hidden>
       <div class="filter-group" role="group" aria-label="Filter by role"><span>Role</span><button type="button" data-filter-track="all" aria-pressed="true">All</button><button type="button" data-filter-track="gameplay" aria-pressed="false">Gameplay</button><button type="button" data-filter-track="software" aria-pressed="false">Software</button></div>
-      <div class="filter-group" role="group" aria-label="Filter by how it was built"><span>Built</span><button type="button" data-filter-build="all" aria-pressed="true">All</button><button type="button" data-filter-build="hand" aria-pressed="false">Hand-coded</button><button type="button" data-filter-build="ai" aria-pressed="false">AI-assisted</button></div>
       <p class="filter-count" data-filter-count aria-live="polite"></p>
     </div>
   </section>
 
-  <section class="menu-section" data-group aria-labelledby="hand-gameplay-title">
-    <div class="section-head"><p class="eyebrow">01 / Hand-coded</p><h2 id="hand-gameplay-title">Gameplay engineering<span class="title-dot">.</span></h2></div>
-    <div class="drink-grid lead-first"><article class="drink win" id="spire" data-track="gameplay" data-build="hand">
-  <div class="win-bar"><span>No.01 <i aria-hidden="true">//</i> Gameplay <i aria-hidden="true">//</i> 2026</span><span class="badges"><span class="badge badge-hand">Hand-coded</span></span></div>
+  <section class="menu-section" data-group aria-labelledby="gameplay-title">
+    <div class="section-head"><p class="eyebrow">01 / Shaken</p><h2 id="gameplay-title">Gameplay engineering<span class="title-dot">.</span></h2></div>
+    <div class="drink-grid lead-first"><article class="drink win" id="spire" data-track="gameplay">
+  <div class="win-bar"><span>No.01 <i aria-hidden="true">//</i> Gameplay <i aria-hidden="true">//</i> 2026</span><span class="badge">Hand-coded</span></div>
   <a class="drink-visual" href="slay-the-spire.html" aria-label="Open Slay the Spire Clone"><img src="assets/spire.jpg" alt="Card-driven combat in the Slay the Spire clone" width="1280" height="720" loading="lazy"></a>
-  <div class="drink-body"><h3><a href="slay-the-spire.html">Slay the Spire Clone</a></h3><p class="drink-summary">A deckbuilder combat engine in Unity 6: a FIFO action queue that can pause for player input, typed buff hooks, data-driven cards with custom Inspector tooling, procedural maps, and versioned saves covered by EditMode tests.</p><p class="drink-role"><b>Role</b> Solo developer</p><div class="tags"><span>C#</span><span>Unity 6</span><span>Action queue</span><span>ScriptableObjects</span><span>Editor tooling</span><span>GameCI</span></div><div class="drink-links"><a class="button small" href="slay-the-spire.html">Read case study <span aria-hidden="true">→</span></a><a class="text-link" href="https://github.com/kingslayerrq/Unity-2D">Source <span aria-hidden="true">↗</span></a></div></div>
+  <div class="drink-body"><h3><a href="slay-the-spire.html">Slay the Spire Clone</a></h3><p class="drink-summary">A deckbuilder combat engine in Unity 6: a FIFO action queue that can pause for player input, typed buff hooks, data-driven cards with custom Inspector tooling, procedural maps, and versioned saves covered by EditMode tests.</p><p class="drink-role"><b>Role</b> Solo developer</p><div class="tags"><span>C#</span><span>Unity 6</span><span>Action queue</span><span>ScriptableObjects</span><span>Editor tooling</span><span>GameCI</span></div><div class="drink-links"><a class="button small" href="slay-the-spire.html">See the recipe <span aria-hidden="true">→</span></a><a class="text-link" href="https://github.com/kingslayerrq/Unity-2D">Source <span aria-hidden="true">↗</span></a></div></div>
 </article>
-<article class="drink win" id="balatro" data-track="gameplay" data-build="hand">
-  <div class="win-bar"><span>No.02 <i aria-hidden="true">//</i> Gameplay <i aria-hidden="true">//</i> 2025</span><span class="badges"><span class="badge badge-hand">Hand-coded</span></span></div>
+<article class="drink win" id="balatro" data-track="gameplay">
+  <div class="win-bar"><span>No.02 <i aria-hidden="true">//</i> Gameplay <i aria-hidden="true">//</i> 2025</span><span class="badge">Hand-coded</span></div>
   <a class="drink-visual" href="balatro.html" aria-label="Open Balatro Clone"><img src="assets/balatro.jpg" alt="Poker cards and scoring in the Balatro clone" width="1280" height="720" loading="lazy"></a>
-  <div class="drink-body"><h3><a href="balatro.html">Balatro Clone</a></h3><p class="drink-summary">A poker roguelike study: rank and suit hand evaluation, coroutine-staged scoring the player can follow card by card, ScriptableObject-driven blinds and hands, and shader-based card presentation.</p><p class="drink-role"><b>Role</b> Solo developer</p><div class="tags"><span>C#</span><span>Unity</span><span>Coroutines</span><span>ScriptableObjects</span><span>Shaders</span></div><div class="drink-links"><a class="button small" href="balatro.html">Read case study <span aria-hidden="true">→</span></a><a class="text-link" href="https://github.com/kingslayerrq/Balatro-Clone">Source <span aria-hidden="true">↗</span></a></div></div>
+  <div class="drink-body"><h3><a href="balatro.html">Balatro Clone</a></h3><p class="drink-summary">A poker roguelike study: rank and suit hand evaluation, coroutine-staged scoring the player can follow card by card, ScriptableObject-driven blinds and hands, and shader-based card presentation.</p><p class="drink-role"><b>Role</b> Solo developer</p><div class="tags"><span>C#</span><span>Unity</span><span>Coroutines</span><span>ScriptableObjects</span><span>Shaders</span></div><div class="drink-links"><a class="button small" href="balatro.html">See the recipe <span aria-hidden="true">→</span></a><a class="text-link" href="https://github.com/kingslayerrq/Balatro-Clone">Source <span aria-hidden="true">↗</span></a></div></div>
 </article>
-<article class="drink win" id="underwatch" data-track="gameplay" data-build="hand">
-  <div class="win-bar"><span>No.03 <i aria-hidden="true">//</i> Gameplay <i aria-hidden="true">//</i> 2026</span><span class="badges"><span class="badge badge-hand">Hand-coded</span></span></div>
+<article class="drink win" id="underwatch" data-track="gameplay">
+  <div class="win-bar"><span>No.03 <i aria-hidden="true">//</i> Gameplay <i aria-hidden="true">//</i> 2026</span><span class="badge">Hand-coded</span></div>
   <a class="drink-visual" href="https://github.com/kingslayerrq/Booomjam2026" aria-label="Open UnderWatch"><img src="assets/underwatch.jpg" alt="UnderWatch surveillance view: a fisheye camera feed of two prisoners in the gym, with the camera map and power, handcuff, and coffee meters" width="1280" height="720" loading="lazy"></a>
   <div class="drink-body"><h3><a href="https://github.com/kingslayerrq/Booomjam2026">UnderWatch</a></h3><p class="drink-summary">A BOOOM Jam 2026 game in Unity 6 URP: watch prisoners through surveillance feeds by day, defend the camera room at night. ScriptableObject prisoner actions, per-day schedule and evidence assignment, night attack routes, a save system, and a PS1-style post-process render feature.</p><p class="drink-role"><b>Role</b> Team of 3 · lead programmer (32 of 39 commits)</p><div class="tags"><span>C#</span><span>Unity 6 URP</span><span>ScriptableObjects</span><span>Render feature</span><span>Save system</span><span>WebGL</span></div><div class="drink-links"><a class="button small" href="https://github.com/kingslayerrq/Booomjam2026">View source <span aria-hidden="true">↗</span></a></div></div>
 </article>
-<article class="drink win" id="action-platformer" data-track="gameplay" data-build="hand">
-  <div class="win-bar"><span>No.06 <i aria-hidden="true">//</i> Gameplay <i aria-hidden="true">//</i> 2023</span><span class="badges"><span class="badge badge-hand">Hand-coded</span></span></div>
+<article class="drink win" id="action-platformer" data-track="gameplay">
+  <div class="win-bar"><span>No.06 <i aria-hidden="true">//</i> Gameplay <i aria-hidden="true">//</i> 2023</span><span class="badge">Hand-coded</span></div>
   <a class="drink-visual" href="https://github.com/kingslayerrq/IntermediateGamDevFinal" aria-label="Open Hollow Knight–Style Platformer"><img src="assets/platformer.jpg" alt="The platformer&#x27;s main scene rendered in Unity: the player character on a ledge in front of tall arched windows" width="1280" height="720" loading="lazy"></a>
   <div class="drink-body"><h3><a href="https://github.com/kingslayerrq/IntermediateGamDevFinal">Hollow Knight–Style Platformer</a></h3><p class="drink-summary">Team final for Intermediate Game Development at NYU: a Hollow Knight–inspired 2D action platformer with up, down, and side slash combat, a time-slow ability, ground and flying enemies, and a boss encounter, built over 65 pull requests.</p><p class="drink-role"><b>Role</b> Team of 4 · top contributor (55 of 135 commits)</p><div class="tags"><span>C#</span><span>Unity</span><span>Combat</span><span>Enemy AI</span><span>Team · PR workflow</span></div><div class="drink-links"><a class="button small" href="https://github.com/kingslayerrq/IntermediateGamDevFinal">View source <span aria-hidden="true">↗</span></a></div></div>
 </article>
-<article class="drink win" id="ggj-2026" data-track="gameplay" data-build="hand">
-  <div class="win-bar"><span>No.07 <i aria-hidden="true">//</i> Gameplay <i aria-hidden="true">//</i> 2026</span><span class="badges"><span class="badge badge-hand">Hand-coded</span></span></div>
+<article class="drink win" id="ggj-2026" data-track="gameplay">
+  <div class="win-bar"><span>No.07 <i aria-hidden="true">//</i> Gameplay <i aria-hidden="true">//</i> 2026</span><span class="badge">Hand-coded</span></div>
   <a class="drink-visual" href="https://github.com/kingslayerrq/GGJ2026" aria-label="Open GGJ 2026 Jam Game"><img src="assets/ggj-2026.jpg" alt="The jam game&#x27;s underwater scene rendered in Unity: light rays over a sandy seabed with a school of fish" width="1280" height="720" loading="lazy"></a>
   <div class="drink-body"><h3><a href="https://github.com/kingslayerrq/GGJ2026">GGJ 2026 Jam Game</a></h3><p class="drink-summary">A Global Game Jam 2026 team entry in Unity 6: underwater exploration with a seahorse controller and ocean resistance, dialogue and quest interactions, a crab-rush minigame, and an in-game screenshot gallery. I also ran the repo: PR workflow, branch rules, and Unity CI.</p><p class="drink-role"><b>Role</b> Team project · repo maintainer (30 of 44 commits)</p><div class="tags"><span>C#</span><span>Unity 6</span><span>Game jam</span><span>CI</span><span>Team · PR workflow</span></div><div class="drink-links"><a class="button small" href="https://github.com/kingslayerrq/GGJ2026">View source <span aria-hidden="true">↗</span></a></div></div>
+</article>
+<article class="drink win" id="network" data-track="gameplay">
+  <div class="win-bar"><span>No.09 <i aria-hidden="true">//</i> Gameplay <i aria-hidden="true">//</i> 2026</span><span class="badge">AI-assisted</span></div>
+  <a class="drink-visual" href="https://kingslayerrq.itch.io/network" aria-label="Open Network — Playdate Prototype &amp; Level Editor"><img src="assets/network-editor.jpg" alt="Network Workshop level editor showing the Containment Grid map: nodes, locks, switches, and routes on a grid, with tool and inspector panels" width="1280" height="720" loading="lazy"></a>
+  <div class="drink-body"><h3><a href="https://kingslayerrq.itch.io/network">Network — Playdate Prototype &amp; Level Editor</a></h3><p class="drink-summary">A hacking puzzle game for the Playdate handheld in Lua, plus an offline visual node-graph editor with validation, JSON save/load, and Lua export. A Docker-based Playdate SDK environment runs automated JavaScript and Lua tests and packages the build. Released on itch.io.</p><p class="drink-role"><b>Role</b> Solo</p><div class="tags"><span>Lua</span><span>Playdate SDK</span><span>JavaScript</span><span>Docker</span><span>Level editor</span></div><div class="drink-links"><a class="button small" href="https://kingslayerrq.itch.io/network">Play on itch.io <span aria-hidden="true">↗</span></a></div></div>
 </article></div>
   </section>
 
-  <section class="menu-section" data-group aria-labelledby="hand-software-title">
-    <div class="section-head"><p class="eyebrow">02 / Hand-coded</p><h2 id="hand-software-title">Software engineering<span class="title-dot">.</span></h2></div>
-    <div class="drink-grid"><article class="drink win" id="my-web" data-track="software" data-build="hand">
-  <div class="win-bar"><span>No.04 <i aria-hidden="true">//</i> Software <i aria-hidden="true">//</i> 2024–25</span><span class="badges"><span class="badge badge-hand">Hand-coded</span></span></div>
+  <section class="menu-section" data-group aria-labelledby="software-title">
+    <div class="section-head"><p class="eyebrow">02 / Stirred</p><h2 id="software-title">Software engineering<span class="title-dot">.</span></h2></div>
+    <div class="drink-grid"><article class="drink win" id="my-web" data-track="software">
+  <div class="win-bar"><span>No.04 <i aria-hidden="true">//</i> Software <i aria-hidden="true">//</i> 2024–25</span><span class="badge">Hand-coded</span></div>
   <a class="drink-visual" href="my-web.html" aria-label="Open GameDev Hub"><img src="assets/my-web-catalog.png" alt="GameDev Hub catalog reconstructed locally with sample records" width="1280" height="720" loading="lazy"></a>
-  <div class="drink-body"><h3><a href="my-web.html">GameDev Hub</a></h3><p class="drink-summary">A full-stack platform for publishing and discovering games: React client, Express API, a Prisma/PostgreSQL data model, S3 uploads, Passport auth with Discord linking, and a live Discord gateway relay over WebSockets.</p><p class="drink-role"><b>Role</b> Solo developer · 143 commits</p><div class="tags"><span>React</span><span>Express</span><span>PostgreSQL · Prisma</span><span>AWS S3</span><span>Redis</span><span>WebSockets</span><span>Docker</span></div><div class="drink-links"><a class="button small" href="my-web.html">Read case study <span aria-hidden="true">→</span></a><a class="text-link" href="https://github.com/kingslayerrq/my-web">Source <span aria-hidden="true">↗</span></a></div></div>
+  <div class="drink-body"><h3><a href="my-web.html">GameDev Hub</a></h3><p class="drink-summary">A full-stack platform for publishing and discovering games: React client, Express API, a Prisma/PostgreSQL data model, S3 uploads, Passport auth with Discord linking, and a live Discord gateway relay over WebSockets.</p><p class="drink-role"><b>Role</b> Solo developer · 143 commits</p><div class="tags"><span>React</span><span>Express</span><span>PostgreSQL · Prisma</span><span>AWS S3</span><span>Redis</span><span>WebSockets</span><span>Docker</span></div><div class="drink-links"><a class="button small" href="my-web.html">See the recipe <span aria-hidden="true">→</span></a><a class="text-link" href="https://github.com/kingslayerrq/my-web">Source <span aria-hidden="true">↗</span></a></div></div>
 </article>
-<article class="drink win" id="systems-c" data-track="software" data-build="hand">
-  <div class="win-bar"><span>No.05 <i aria-hidden="true">//</i> Software <i aria-hidden="true">//</i> 2023</span><span class="badges"><span class="badge badge-hand">Hand-coded</span></span></div>
+<article class="drink win" id="systems-c" data-track="software">
+  <div class="win-bar"><span>No.05 <i aria-hidden="true">//</i> Software <i aria-hidden="true">//</i> 2023</span><span class="badge">Hand-coded</span></div>
   <div class="drink-visual is-code"><span class="code-file">nyuenc.c · worker loop, debug comments trimmed</span><pre><code>void *worker(void *arg)
 {
     threadpool_t *pool = (threadpool_t *)arg;
@@ -116,13 +120,9 @@
         // Runs the Task
         t-&gt;res = t-&gt;func(t-&gt;arg, t-&gt;chunkSize);</code></pre></div>
   <div class="drink-body"><h3><a href="https://github.com/kingslayerrq/lab3">Multithreaded Run-Length Encoder</a></h3><p class="drink-summary">A concurrent compression tool in C: a pthread worker pool pulls chunks from a mutex-guarded task queue, encodes them in parallel, and a stitcher joins results in order. Its sibling lab is a FAT32 undelete tool that recovers deleted files, including SHA-1-verified and non-contiguous cases.</p><p class="drink-role"><b>Role</b> Solo · NYU Operating Systems</p><div class="tags"><span>C</span><span>pthreads</span><span>Mutexes · condition variables</span><span>GDB</span><span>FAT32</span></div><div class="drink-links"><a class="button small" href="https://github.com/kingslayerrq/lab3">Encoder source <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/kingslayerrq/lab4">FAT32 recovery source <span aria-hidden="true">↗</span></a></div></div>
-</article></div>
-  </section>
-
-  <section class="menu-section ai-section" data-group aria-labelledby="ai-title">
-    <div class="section-head"><p class="eyebrow">03 / Machine-assisted</p><h2 id="ai-title">Built with AI<span class="title-dot">.</span></h2><p>Shipped with coding agents such as Claude Code and Codex. Each card says which.</p></div>
-    <div class="drink-grid"><article class="drink win" id="heritage-afterlife" data-track="software" data-build="ai">
-  <div class="win-bar"><span>No.08 <i aria-hidden="true">//</i> Software <i aria-hidden="true">//</i> 2026</span><span class="badges"><span class="badge badge-ai">AI-assisted</span></span></div>
+</article>
+<article class="drink win" id="heritage-afterlife" data-track="software">
+  <div class="win-bar"><span>No.08 <i aria-hidden="true">//</i> Software <i aria-hidden="true">//</i> 2026</span><span class="badge" title="Built with Claude Code and Codex agents; the repository keeps its CLAUDE.md and AGENTS.md.">AI-assisted</span></div>
   <div class="drink-visual is-code"><span class="code-file">architecture · summarized from the project README</span><pre><code>Discord members
       |  slash commands, DMs
       v
@@ -136,20 +136,15 @@ Python Hub -- verifies identities, settles rewards
       &#x27;-- Builds    pipeline reports
 
 Docker Compose on a GCP VM</code></pre></div>
-  <div class="drink-body"><h3>Heritage Afterlife</h3><p class="drink-summary">A Discord community and project-operations system for a game team: a Node.js bot for member interactions and a Python hub that verifies identities, settles rewards, and reports from Jira, Perforce, Notion, and build pipelines. Runs on a GCP VM with Docker Compose.</p><p class="drink-role"><b>Role</b> Solo · 85 commits, 17 pull requests</p><div class="tags"><span>Node.js</span><span>Python</span><span>Discord API</span><span>Jira</span><span>Docker</span><span>GCP</span></div><p class="build-note">Built with Claude Code and Codex agents; the repository keeps its CLAUDE.md and AGENTS.md.</p><div class="drink-links"><span class="private-label">Private repository</span></div></div>
+  <div class="drink-body"><h3>Heritage Afterlife</h3><p class="drink-summary">A Discord community and project-operations system for a game team: a Node.js bot for member interactions and a Python hub that verifies identities, settles rewards, and reports from Jira, Perforce, Notion, and build pipelines. Runs on a GCP VM with Docker Compose.</p><p class="drink-role"><b>Role</b> Solo · 85 commits, 17 pull requests</p><div class="tags"><span>Node.js</span><span>Python</span><span>Discord API</span><span>Jira</span><span>Docker</span><span>GCP</span></div><div class="drink-links"><span class="private-label">Private repository</span></div></div>
 </article>
-<article class="drink win" id="network" data-track="gameplay" data-build="ai">
-  <div class="win-bar"><span>No.09 <i aria-hidden="true">//</i> Gameplay <i aria-hidden="true">//</i> 2026</span><span class="badges"><span class="badge badge-ai">AI-assisted</span></span></div>
-  <a class="drink-visual" href="https://kingslayerrq.itch.io/network" aria-label="Open Network — Playdate Prototype &amp; Level Editor"><img src="assets/network-editor.jpg" alt="Network Workshop level editor showing the Containment Grid map: nodes, locks, switches, and routes on a grid, with tool and inspector panels" width="1280" height="720" loading="lazy"></a>
-  <div class="drink-body"><h3><a href="https://kingslayerrq.itch.io/network">Network — Playdate Prototype &amp; Level Editor</a></h3><p class="drink-summary">A hacking puzzle game for the Playdate handheld in Lua, plus an offline visual node-graph editor with validation, JSON save/load, and Lua export. A Docker-based Playdate SDK environment runs automated JavaScript and Lua tests and packages the build. Released on itch.io.</p><p class="drink-role"><b>Role</b> Solo</p><div class="tags"><span>Lua</span><span>Playdate SDK</span><span>JavaScript</span><span>Docker</span><span>Level editor</span></div><div class="drink-links"><a class="button small" href="https://kingslayerrq.itch.io/network">Play on itch.io <span aria-hidden="true">↗</span></a></div></div>
-</article>
-<article class="drink win" id="heritage-devlog" data-track="software" data-build="ai">
-  <div class="win-bar"><span>No.10 <i aria-hidden="true">//</i> Software <i aria-hidden="true">//</i> 2026</span><span class="badges"><span class="badge badge-ai">AI-assisted</span></span></div>
+<article class="drink win" id="heritage-devlog" data-track="software">
+  <div class="win-bar"><span>No.10 <i aria-hidden="true">//</i> Software <i aria-hidden="true">//</i> 2026</span><span class="badge" title="Built with Claude Code and Codex agents; the repository keeps its CLAUDE.md and AGENTS.md.">AI-assisted</span></div>
   <a class="drink-visual" href="https://kingslayerrq.github.io/heritage-devlog/" aria-label="Open Heritage Devlog"><img src="assets/heritage-devlog.jpg" alt="Heritage devlog homepage: a development journal with category filters and the latest entry" width="1280" height="720" loading="lazy"></a>
-  <div class="drink-body"><h3><a href="https://kingslayerrq.github.io/heritage-devlog/">Heritage Devlog</a></h3><p class="drink-summary">A public development journal with an automated publishing pipeline: authors verify through Discord, submit Markdown through Git branches or Notion, and valid entries are checked, merged, and deployed to GitHub Pages.</p><p class="drink-role"><b>Role</b> Solo developer</p><div class="tags"><span>Astro</span><span>TypeScript</span><span>GitHub Actions</span><span>Notion</span></div><p class="build-note">Built with Claude Code and Codex agents; the repository keeps its CLAUDE.md and AGENTS.md.</p><div class="drink-links"><a class="button small" href="https://kingslayerrq.github.io/heritage-devlog/">Visit live site <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/kingslayerrq/heritage-devlog">Source <span aria-hidden="true">↗</span></a></div></div>
+  <div class="drink-body"><h3><a href="https://kingslayerrq.github.io/heritage-devlog/">Heritage Devlog</a></h3><p class="drink-summary">A public development journal with an automated publishing pipeline: authors verify through Discord, submit Markdown through Git branches or Notion, and valid entries are checked, merged, and deployed to GitHub Pages.</p><p class="drink-role"><b>Role</b> Solo developer</p><div class="tags"><span>Astro</span><span>TypeScript</span><span>GitHub Actions</span><span>Notion</span></div><div class="drink-links"><a class="button small" href="https://kingslayerrq.github.io/heritage-devlog/">Visit live site <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/kingslayerrq/heritage-devlog">Source <span aria-hidden="true">↗</span></a></div></div>
 </article>
-<article class="drink win" id="resume-factory" data-track="software" data-build="ai">
-  <div class="win-bar"><span>No.11 <i aria-hidden="true">//</i> Software <i aria-hidden="true">//</i> 2026</span><span class="badges"><span class="badge badge-ai">AI-assisted</span></span></div>
+<article class="drink win" id="resume-factory" data-track="software">
+  <div class="win-bar"><span>No.11 <i aria-hidden="true">//</i> Software <i aria-hidden="true">//</i> 2026</span><span class="badge" title="Built with AI coding agents; the repository keeps its AGENTS.md.">AI-assisted</span></div>
   <div class="drink-visual is-code"><span class="code-file">main.py · web and Gmail scrapers run concurrently</span><pre><code>if current_offset == 0 and use_email:
     log(f&quot;   📧 Email Scraper Active (Limit: {email_limit})&quot;, status_callback)
     email_task = asyncio.to_thread(fetch_job_urls_from_gmail, max_results=email_limit)
@@ -160,45 +155,45 @@ else:
 # 3. Execute Both Simultaneously
 log(&quot;   ⏳ Waiting for Gmail and JobSpy...&quot;, status_callback)
 web_results, email_results = await asyncio.gather(web_task, email_task)</code></pre></div>
-  <div class="drink-body"><h3><a href="https://github.com/kingslayerrq/VB_Resume">AI Resume Factory</a></h3><p class="drink-summary">Job-application automation: scrapes job boards and Gmail alerts, tailors a resume per posting with a local Ollama or OpenAI model, renders PDFs with Playwright, and syncs results to Drive, Notion, and Discord. Ships with CI tests and lint.</p><p class="drink-role"><b>Role</b> Solo developer</p><div class="tags"><span>Python</span><span>LLM agents</span><span>Playwright</span><span>Google APIs</span><span>pytest</span></div><p class="build-note">Built with AI coding agents; the repository keeps its AGENTS.md.</p><div class="drink-links"><a class="button small" href="https://github.com/kingslayerrq/VB_Resume">View source <span aria-hidden="true">↗</span></a></div></div>
+  <div class="drink-body"><h3><a href="https://github.com/kingslayerrq/VB_Resume">AI Resume Factory</a></h3><p class="drink-summary">Job-application automation: scrapes job boards and Gmail alerts, tailors a resume per posting with a local Ollama or OpenAI model, renders PDFs with Playwright, and syncs results to Drive, Notion, and Discord. Ships with CI tests and lint.</p><p class="drink-role"><b>Role</b> Solo developer</p><div class="tags"><span>Python</span><span>LLM agents</span><span>Playwright</span><span>Google APIs</span><span>pytest</span></div><div class="drink-links"><a class="button small" href="https://github.com/kingslayerrq/VB_Resume">View source <span aria-hidden="true">↗</span></a></div></div>
 </article></div>
   </section>
 
   <section class="menu-section" data-group aria-labelledby="small-title">
-    <div class="section-head"><p class="eyebrow">04 / Small pours</p><h2 id="small-title">Earlier and smaller work<span class="title-dot">.</span></h2></div>
-    <ul class="pour-list"><li class="pour" id="ai-search" data-track="software" data-build="hand">
+    <div class="section-head"><p class="eyebrow">03 / Small pours</p><h2 id="small-title">Earlier and smaller work<span class="title-dot">.</span></h2></div>
+    <ul class="pour-list"><li class="pour" id="ai-search" data-track="software">
   <span class="pour-no">No.12<small>2024</small></span>
   <div class="pour-main"><h3><a href="https://github.com/kingslayerrq/AI-search">Search Under a Budget</a></h3><p>Iterative deepening and hill climbing with random restarts for a budget-constrained selection problem, with verbose and compact search traces.</p><div class="tags"><span>Python</span><span>Search</span><span>Algorithms</span></div></div>
-  <div class="pour-side"><span class="badges"><span class="badge badge-hand">Hand-coded</span></span><a class="text-link" href="https://github.com/kingslayerrq/AI-search">View source <span aria-hidden="true">↗</span></a></div>
+  <div class="pour-side"><span class="badge">Hand-coded</span><a class="text-link" href="https://github.com/kingslayerrq/AI-search">View source <span aria-hidden="true">↗</span></a></div>
 </li>
-<li class="pour" id="endless-dodger" data-track="gameplay" data-build="hand">
+<li class="pour" id="endless-dodger" data-track="gameplay">
   <span class="pour-no">No.13<small>2024</small></span>
   <div class="pour-main"><h3><a href="https://github.com/kingslayerrq/InfScrollBg">Endless Dodger</a></h3><p>An endless-scrolling Unity prototype: seamless looping background, obstacle spawner, observer-pattern damage events, and a local scoreboard.</p><div class="tags"><span>C#</span><span>Unity</span><span>Observer pattern</span></div></div>
-  <div class="pour-side"><span class="badges"><span class="badge badge-hand">Hand-coded</span></span><a class="text-link" href="https://github.com/kingslayerrq/InfScrollBg">View source <span aria-hidden="true">↗</span></a></div>
+  <div class="pour-side"><span class="badge">Hand-coded</span><a class="text-link" href="https://github.com/kingslayerrq/InfScrollBg">View source <span aria-hidden="true">↗</span></a></div>
 </li>
-<li class="pour" id="ecosystem" data-track="gameplay" data-build="hand">
+<li class="pour" id="ecosystem" data-track="gameplay">
   <span class="pour-no">No.14<small>2023</small></span>
   <div class="pour-main"><h3><a href="https://github.com/kingslayerrq/Ecosystem">Ecosystem</a></h3><p>A beach ecosystem simulation in Unity where crabs, seagulls, lifeguards, and bubbles act as interacting autonomous agents.</p><div class="tags"><span>C#</span><span>Unity</span><span>Agents</span></div></div>
-  <div class="pour-side"><span class="badges"><span class="badge badge-hand">Hand-coded</span></span><a class="text-link" href="https://github.com/kingslayerrq/Ecosystem">View source <span aria-hidden="true">↗</span></a></div>
+  <div class="pour-side"><span class="badge">Hand-coded</span><a class="text-link" href="https://github.com/kingslayerrq/Ecosystem">View source <span aria-hidden="true">↗</span></a></div>
 </li>
-<li class="pour" id="cloud-duel" data-track="gameplay" data-build="hand">
+<li class="pour" id="cloud-duel" data-track="gameplay">
   <span class="pour-no">No.15<small>2023</small></span>
   <div class="pour-main"><h3><a href="https://github.com/kingslayerrq/IntroGameDevFinal">Cloud Duel</a></h3><p>A two-player GameMaker action game: dash and descend movement, clouds that grow and break, round and score managers, screenshake, and particles.</p><div class="tags"><span>GameMaker</span><span>GML</span><span>Game feel</span></div></div>
-  <div class="pour-side"><span class="badges"><span class="badge badge-hand">Hand-coded</span></span><a class="text-link" href="https://github.com/kingslayerrq/IntroGameDevFinal">View source <span aria-hidden="true">↗</span></a></div>
+  <div class="pour-side"><span class="badge">Hand-coded</span><a class="text-link" href="https://github.com/kingslayerrq/IntroGameDevFinal">View source <span aria-hidden="true">↗</span></a></div>
 </li>
-<li class="pour" id="balatro-ai" data-track="software" data-build="ai">
+<li class="pour" id="balatro-ai" data-track="software">
   <span class="pour-no">No.16<small>2025–26</small></span>
   <div class="pour-main"><h3><a href="https://github.com/kingslayerrq/balatro-ai">Balatro AI</a></h3><p>A Gymnasium environment and a Lua mod socket bridge that let a PPO agent play Balatro, with training, evaluation, and replay tooling.</p><div class="tags"><span>Python</span><span>Gymnasium</span><span>PPO</span><span>Lua</span></div></div>
-  <div class="pour-side"><span class="badges"><span class="badge badge-ai">AI-assisted</span></span><a class="text-link" href="https://github.com/kingslayerrq/balatro-ai">View source <span aria-hidden="true">↗</span></a></div>
+  <div class="pour-side"><span class="badge">AI-assisted</span><a class="text-link" href="https://github.com/kingslayerrq/balatro-ai">View source <span aria-hidden="true">↗</span></a></div>
 </li>
-<li class="pour" id="last-seen" data-track="software" data-build="ai">
+<li class="pour" id="last-seen" data-track="software">
   <span class="pour-no">No.17<small>2026</small></span>
   <div class="pour-main"><h3><a href="https://github.com/kingslayerrq/discord-last-login">Last Seen</a></h3><p>A local-only BetterDiscord plugin that remembers when users were last observed online, with a separately tested core, CI, and tagged releases.</p><div class="tags"><span>JavaScript</span><span>Testing</span><span>CI releases</span></div></div>
-  <div class="pour-side"><span class="badges"><span class="badge badge-ai">AI-assisted</span></span><a class="text-link" href="https://github.com/kingslayerrq/discord-last-login">View source <span aria-hidden="true">↗</span></a></div>
+  <div class="pour-side"><span class="badge">AI-assisted</span><a class="text-link" href="https://github.com/kingslayerrq/discord-last-login">View source <span aria-hidden="true">↗</span></a></div>
 </li></ul>
   </section>
 
-  <p class="project-note">Game clones are educational projects; original game names and third-party artwork belong to their creators. GameDev Hub imagery shows a local reconstruction with sample data. Labels reflect how each project was built; case studies note any later AI-assisted refactoring. The platformer is a class project that uses third-party art.</p>
+  <p class="project-note">Game clones are educational projects; original game names and third-party artwork belong to their creators. GameDev Hub imagery shows a local reconstruction with sample data. The platformer is a class project that uses third-party art.</p>
 </main>
 
   <footer class="site-footer wrap" id="contact">
