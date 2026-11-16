@@ -7,20 +7,106 @@ if ((location.pathname.endsWith('/index.html') || location.pathname.endsWith('/'
   location.replace(legacyAnchors[location.hash]);
 }
 
-const toggle = document.querySelector('.theme-toggle');
-function updateThemeLabel() {
-  const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-  toggle.setAttribute('aria-label', `Switch to ${next} mode`);
-  toggle.querySelector('.theme-label').textContent = `${next === 'light' ? 'Light' : 'Dark'} mode`;
-}
-toggle.addEventListener('click', () => {
-  const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-  document.documentElement.dataset.theme = theme;
-  try { localStorage.setItem('portfolio-theme', theme); } catch { /* Preference still works this visit. */ }
-  updateThemeLabel();
-});
-updateThemeLabel();
+const root = document.documentElement;
+const effectsOff = () => root.dataset.fx === 'off' || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// CRT effects toggle: scanlines and ambient animation.
+const fxToggle = document.querySelector('.fx-toggle');
+function syncFx() {
+  const on = root.dataset.fx !== 'off';
+  fxToggle.setAttribute('aria-pressed', String(on));
+  fxToggle.querySelector('.fx-state').textContent = on ? 'On' : 'Off';
+}
+fxToggle.addEventListener('click', () => {
+  root.dataset.fx = root.dataset.fx === 'off' ? 'on' : 'off';
+  try { localStorage.setItem('portfolio-fx', root.dataset.fx); } catch { /* Preference still works this visit. */ }
+  syncFx();
+});
+syncFx();
+
+// Local time in the status bar.
+const clock = document.querySelector('[data-clock]');
+if (clock) {
+  const tick = () => {
+    const now = new Date();
+    clock.textContent = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+  };
+  tick();
+  setInterval(tick, 15000);
+}
+
+// Visual-novel dialogue box. Without JavaScript every line is simply listed.
+const dialogue = document.querySelector('[data-dialogue]');
+if (dialogue) {
+  const lines = [...dialogue.querySelectorAll('.dialogue-lines p')];
+  const texts = lines.map(line => line.textContent);
+  const next = dialogue.querySelector('.dialogue-next');
+  let index = 0;
+  let timer = null;
+  const finish = () => {
+    clearInterval(timer);
+    timer = null;
+    lines[index].textContent = texts[index];
+    lines[index].classList.remove('is-typing');
+  };
+  const show = target => {
+    if (timer) finish();
+    index = target;
+    lines.forEach((line, n) => { line.hidden = n !== index; });
+    next.firstChild.textContent = index === lines.length - 1 ? 'Replay ' : 'Next ';
+    if (effectsOff()) return;
+    const line = lines[index];
+    let shown = 0;
+    line.textContent = '';
+    line.classList.add('is-typing');
+    timer = setInterval(() => {
+      shown += 1;
+      line.textContent = texts[index].slice(0, shown);
+      if (shown >= texts[index].length) finish();
+    }, 20);
+  };
+  next.addEventListener('click', () => {
+    if (timer) finish();
+    else show((index + 1) % lines.length);
+  });
+  dialogue.classList.add('is-live');
+  next.hidden = false;
+  show(0);
+}
+
+// Project filters on the menu page.
+const filters = document.querySelector('[data-filters]');
+if (filters) {
+  const state = { track: 'all', build: 'all' };
+  const items = [...document.querySelectorAll('[data-track][data-build]')];
+  const groups = [...document.querySelectorAll('[data-group]')];
+  const count = filters.querySelector('[data-filter-count]');
+  const apply = () => {
+    let visible = 0;
+    items.forEach(item => {
+      const match = (state.track === 'all' || item.dataset.track === state.track)
+        && (state.build === 'all' || item.dataset.build === state.build);
+      item.hidden = !match;
+      if (match) visible += 1;
+    });
+    groups.forEach(group => { group.hidden = !group.querySelector('[data-track]:not([hidden])'); });
+    count.textContent = `${visible} of ${items.length} shown`;
+  };
+  filters.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', () => {
+      if ('filterTrack' in button.dataset) state.track = button.dataset.filterTrack;
+      else state.build = button.dataset.filterBuild;
+      button.parentElement.querySelectorAll('button').forEach(other => {
+        other.setAttribute('aria-pressed', String(other === button));
+      });
+      apply();
+    });
+  });
+  filters.hidden = false;
+  apply();
+}
+
+// Case studies: open linked code disclosures and keep one video playing at a time.
 function openLinkedDetails() {
   const target = document.getElementById(window.location.hash.slice(1));
   if (target instanceof HTMLDetailsElement) target.open = true;

@@ -1,10 +1,123 @@
 <main id="main">
-  <section class="identity wrap" aria-labelledby="hero-title">
-    <div class="identity-copy"><p class="eyebrow"><span class="signal-dot" aria-hidden="true"></span> HELLO, WORLD. / THIS IS MY CORNER OF THE WIRED.</p><h1 id="hero-title">Richard<br><span class="surname">Qu<span class="title-dot">.</span></span></h1><p class="identity-role">{{role}}</p><p class="identity-intro">{{intro}}</p><div class="hero-actions"><a class="button primary" href="#about">A little about me <span aria-hidden="true">↓</span></a><a class="text-link" href="projects.html">Explore my work ↗</a></div><div class="identity-location"><span>DUKE / GDDI</span><span>NYU / COMPUTER SCIENCE</span></div></div>
-    <figure class="wired-art"><div class="art-meta"><span>TRANSMISSION_001</span><span aria-hidden="true">[ + ]</span></div><img src="assets/wired-sky.png" width="1536" height="1024" alt="Atmospheric illustration of a utility pole and tangled overhead wires against a muted sky"><figcaption><span>THE SPACE BETWEEN PEOPLE & MACHINES</span><span>接続</span></figcaption></figure>
+  <section class="stage wrap" aria-labelledby="hero-title">
+    <div class="win viewport">
+      <div class="win-bar"><span>Viewport <i aria-hidden="true">//</i> Counter cam 01</span><span class="rec"><i aria-hidden="true"></i>Live</span></div>
+      <div class="scene">{{bar_scene}}</div>
+    </div>
+    <aside class="win idcard" aria-label="Profile">
+      <div class="win-bar"><span>Bartender.id</span><span aria-hidden="true">001</span></div>
+      <div class="idcard-body">
+        <p class="eyebrow">On shift tonight</p>
+        <h1 id="hero-title">Richard <span>Qu</span></h1>
+        <p class="idcard-role">{{role}}</p>
+        <dl class="stat-list">
+          <div><dt>Now</dt><dd>Duke University — M.Eng., Game Design, Development &amp; Innovation · 2028</dd></div>
+          <div><dt>Before</dt><dd>NYU — B.A. Computer Science · 2024</dd></div>
+          <div><dt>Shipped</dt><dd>Apple Vision Pro apps in Unity · full-stack internal tools</dd></div>
+          <div><dt>Tools</dt><dd>C# · Unity · C / C++ · TypeScript · Python</dd></div>
+          <div><dt>Status</dt><dd class="stat-open">Open to SWE &amp; gameplay engineering roles</dd></div>
+        </dl>
+        <div class="hero-actions"><a class="button primary" href="#menu">See the menu <span aria-hidden="true">↓</span></a><a class="button" href="{{github}}">GitHub <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </aside>
+    <div class="win dialogue" data-dialogue>
+      <p class="dialogue-speaker">Richard</p>
+      <div class="dialogue-lines">
+        <p>Welcome in. I’m Richard — I build gameplay systems and the software around them.</p>
+        <p>The menu is split in two: what I wrote by hand, and what I built with AI agents. Every pour is labeled.</p>
+        <p>House specials first — a deckbuilder combat engine, a poker roguelike, and a full-stack platform for publishing games.</p>
+        <p>Pull up a stool, or skip the small talk and head straight to the menu.</p>
+      </div>
+      <button class="dialogue-next" type="button" hidden>Next <span aria-hidden="true">▼</span></button>
+    </div>
   </section>
-  <section class="personal-about wrap" id="about" aria-labelledby="about-title"><div><p class="eyebrow">01 / THE PERSON BEHIND THE SCREEN</p><h2 id="about-title">Curious by nature.<br><em>A builder by habit.</em></h2></div><div class="bio-copy"><p>{{bio}}</p><p>{{interests}}</p><p>My work moves between game development, AI, and web applications. I like taking an idea apart, understanding its rules, and putting it back together as something you can play with or use.</p></div></section>
-  <section class="interests wrap" aria-labelledby="interests-title"><h2 class="eyebrow" id="interests-title">THINGS I KEEP COMING BACK TO</h2><div class="interest-grid"><article><span class="interest-number">[01]</span><h3>Games with depth</h3><p>Small rules that combine into interesting choices. Combat systems, card games, and the feel of an interaction.</p><span class="interest-tools">C# / UNITY</span></article><article><span class="interest-number">[02]</span><h3>Systems that learn</h3><p>How an agent sees a problem, chooses an action, and improves through experience.</p><span class="interest-tools">PYTHON / AI / ALGORITHMS</span></article><article><span class="interest-number">[03]</span><h3>Software that connects</h3><p>Interfaces and the machinery behind them—from a useful local tool to a full-stack platform.</p><span class="interest-tools">JAVASCRIPT / REACT / EXPRESS</span></article></div></section>
-  <section class="selected-work wrap" id="work" aria-labelledby="work-title"><div class="section-heading"><div><p class="eyebrow">02 / A FEW THINGS I’VE MADE</p><h2 id="work-title">Selected work<span class="title-dot">.</span></h2></div><a class="text-link" href="projects.html">All projects [{{project_count}}] ↗</a></div><div class="catalog-grid">{{featured_projects}}</div></section>
-  <section class="closing-note wrap"><span aria-hidden="true">[ end of transmission ]</span><p>There’s a person on the other side of the screen.<br><a href="mailto:{{email}}">Say hello.</a></p></section>
+
+  <section class="legend wrap" aria-labelledby="legend-title">
+    <h2 class="eyebrow" id="legend-title">How to read the labels</h2>
+    <div class="legend-grid">
+      <p><span class="badge badge-hand">Hand-coded</span> I wrote the code myself. Listed first, because it shows how I think.</p>
+      <p><span class="badge badge-ai">AI-assisted</span> Built with coding agents such as Claude Code or Codex. Listed second, and always marked.</p>
+    </div>
+  </section>
+
+  <section class="menu-section wrap" id="menu" aria-labelledby="hand-title">
+    <div class="section-head"><p class="eyebrow">01 / House specials</p><h2 id="hand-title">Hand-coded<span class="title-dot">.</span></h2><p>Gameplay systems and software I wrote myself.</p></div>
+    <div class="drink-grid lead-first">{{home_hand}}</div>
+  </section>
+
+  <section class="menu-section ai-section wrap" aria-labelledby="ai-title">
+    <div class="section-head"><p class="eyebrow">02 / Machine-assisted</p><h2 id="ai-title">Built with AI<span class="title-dot">.</span></h2><p>Larger systems shipped with coding agents. Same engineer, different tools.</p></div>
+    <div class="drink-grid">{{home_ai}}</div>
+    <p class="menu-more"><a class="button primary" href="projects.html">Full menu [{{project_count}}] <span aria-hidden="true">→</span></a><span>{{hand_count}} hand-coded · {{ai_count}} AI-assisted</span></p>
+  </section>
+
+  <section class="menu-section wrap" id="experience" aria-labelledby="experience-title">
+    <div class="section-head"><p class="eyebrow">03 / Shift log</p><h2 id="experience-title">Experience<span class="title-dot">.</span></h2></div>
+    <div class="shift-log">
+      <article class="win shift">
+        <div class="win-bar"><span>Sep 2025 – Jan 2026</span><span>New York, NY</span></div>
+        <div class="shift-body"><h3>Software Engineer Intern <span>Artisk AI</span></h3><ul><li>Built an internal admin platform with React/TypeScript, Express, MongoDB, and Redis for internal querying and operations.</li><li>Developed backend APIs, integrated OpenAI APIs, and automated issue-report email workflows on Amazon cloud services.</li></ul><div class="tags"><span>React</span><span>TypeScript</span><span>Express</span><span>MongoDB</span><span>Redis</span></div></div>
+      </article>
+      <article class="win shift">
+        <div class="win-bar"><span>Oct 2024 – Apr 2025</span><span>Shanghai, China</span></div>
+        <div class="shift-body"><h3>Unity Software Developer, Mixed Reality / XR <span>Ekings Multimedia</span></h3><ul><li>Built Apple Vision Pro mixed-reality applications in Unity/C# with AR Foundation and custom shaders, deployed to 5,000+ visitors.</li><li>Integrated real-time image tracking and spatial anchoring with ARKit/ARCore for stable placement.</li><li>Designed reusable Unity systems, and profiled and optimized shaders and rendering.</li></ul><div class="tags"><span>Unity</span><span>C#</span><span>AR Foundation</span><span>ARKit · ARCore</span><span>Shaders</span></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="about wrap" id="about" aria-labelledby="about-title">
+    <div class="win">
+      <div class="win-bar"><span>Behind the counter <i aria-hidden="true">//</i> About</span><span aria-hidden="true">_ □ ×</span></div>
+      <div class="about-body">
+        <div class="about-copy"><p class="eyebrow">04 / The bartender</p><h2 id="about-title">Systems on tap<span class="title-dot">.</span></h2><p>{{bio}}</p><p>{{interests}}</p><p>I came to games from computer science, and I like building systems that make game development smoother. I want to make games that feel unique, strange, and memorable.</p></div>
+        <div class="ingredients" aria-label="Skills by area">
+          <article><h3>Gameplay</h3><ul><li>C# · Unity 6 (URP)</li><li>Unreal Engine</li><li>ScriptableObject architecture</li><li>Custom editor tooling</li><li>AR Foundation · ARKit · ARCore</li><li>Lua (Playdate) · GameMaker</li></ul></article>
+          <article><h3>Software</h3><ul><li>TypeScript · JavaScript · Python</li><li>React · Node.js · Express</li><li>PostgreSQL · Prisma</li><li>MongoDB · Redis</li><li>Docker · GitHub Actions</li><li>Java</li></ul></article>
+          <article><h3>Foundations</h3><ul><li>C · C++</li><li>Concurrency (pthreads) · GDB</li><li>Linux / Unix</li><li>Git · Perforce</li><li>Search and RL algorithms</li><li>Japanese (NYU minor) · 日本語</li></ul></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet wrap" id="character-sheet" aria-labelledby="sheet-title">
+    <div class="win">
+      <div class="win-bar"><span>Patron file <i aria-hidden="true">//</i> Character sheet</span><span aria-hidden="true">LV. 01</span></div>
+      <div class="sheet-body">
+        <div class="sheet-head"><div><p class="eyebrow">05 / Off the clock</p><h2 id="sheet-title">Character sheet<span class="title-dot">.</span></h2></div><dl class="sheet-facts"><div><dt>Name</dt><dd>Ruizhe “Richard” Qu</dd></div><div><dt>Pronouns</dt><dd>He / Him</dd></div><div><dt>Hometown</dt><dd>Shanghai, China</dd></div><div><dt>Usual order</dt><dd>Dark roast coffee</dd></div></dl></div>
+        <div class="sheet-grid">
+          <article class="sheet-card"><h3>Core stats</h3>
+            <dl class="pips">
+              <div><dt>Strength</dt><dd data-pips="4" aria-label="4 of 4"><i></i><i></i><i></i><i></i></dd></div>
+              <div><dt>Dexterity</dt><dd data-pips="4" aria-label="4 of 4"><i></i><i></i><i></i><i></i></dd></div>
+              <div><dt>Constitution</dt><dd data-pips="2" aria-label="2 of 4"><i></i><i></i><i></i><i></i></dd></div>
+              <div><dt>Intelligence</dt><dd data-pips="4" aria-label="4 of 4"><i></i><i></i><i></i><i></i></dd></div>
+              <div><dt>Wisdom</dt><dd data-pips="4" aria-label="4 of 4"><i></i><i></i><i></i><i></i></dd></div>
+              <div><dt>Charisma</dt><dd data-pips="3" aria-label="3 of 4"><i></i><i></i><i></i><i></i></dd></div>
+            </dl>
+          </article>
+          <article class="sheet-card"><h3>Special skills</h3>
+            <dl class="meters">
+              <div><dt>Technical / coding</dt><dd><span style="--level:90%"></span></dd></div>
+              <div><dt>Collaboration</dt><dd><span style="--level:90%"></span></dd></div>
+              <div><dt>Creativity</dt><dd><span style="--level:80%"></span></dd></div>
+              <div><dt>Character / story design</dt><dd><span style="--level:60%"></span></dd></div>
+              <div><dt>Work experience</dt><dd><span style="--level:50%"></span></dd></div>
+            </dl>
+          </article>
+          <article class="sheet-card"><h3>Inventory</h3>
+            <dl class="inventory"><div><dt>Equipment</dt><dd>My brain · my patience · my curiosity</dd></div><div><dt>Consumables</dt><dd>Dark roast coffee · a book · music</dd></div><div><dt>Key items</dt><dd>Laptop · AirPods · lip balm</dd></div></dl>
+          </article>
+          <article class="sheet-card"><h3>Feats</h3>
+            <ul class="feats"><li>Built multiple Unity prototypes and game systems, including card combat, map generation, UI interactions, and camera systems.</li><li>Created web and Discord-related projects using APIs, authentication, and backend systems.</li><li>Experienced with both programming and game design, which helps me connect technical and creative ideas.</li><li>Overwatch: 8,000+ hours, Grandmaster on Damage for one season.</li><li>Amazon Certified Junior Software Developer (2025).</li></ul>
+          </article>
+          <article class="sheet-card"><h3>Favorites</h3>
+            <dl class="inventory"><div><dt>Games</dt><dd>Overwatch · Deadlock · VA-11 Hall-A · Destiny 2</dd></div><div><dt>Genres</dt><dd>FPS · ARPG · roguelike · card-based · turn-based</dd></div><div><dt>Characters</dt><dd>Arin Fairfax · Iwakura Lain · Spike Spiegel</dd></div></dl>
+          </article>
+          <article class="sheet-card"><h3>Off duty</h3>
+            <ul class="feats"><li>Observing and analyzing games</li><li>Gym</li><li>Hanging out on Discord</li><li>Trying new tech</li><li>Drawn to worlds with loneliness, nostalgia, or cyberpunk energy</li></ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>

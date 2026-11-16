@@ -1,12 +1,14 @@
 {
   "name": "Richard Qu",
   "handle": "Kingslayerrq",
-  "role": "Game developer & software engineer",
+  "role": "Gameplay & software engineer",
   "email": "rq2014@nyu.edu",
   "discord_id": "1225896471812112426",
   "github": "https://github.com/kingslayerrq",
-  "intro": "I make games, build software, and follow the questions that live somewhere between the two.",
-  "bio": "I’m studying Game Design, Development & Innovation at Duke University, with a computer science background from NYU and minors in Game Design and Japanese.",
-  "interests": "I’m drawn to the systems beneath an experience: how a card effect unfolds, how an agent makes a decision, and how a small interaction becomes satisfying to use.",
-  "footer_credit": "vibe coded by Kingslayerrq"
+  "itch": "https://kingslayerrq.itch.io",
+  "intro": "Gameplay and software engineer. Combat systems, editor tooling, and full-stack software — with every project labeled hand-coded or AI-assisted.",
+  "bio": "I’m a Master of Engineering student in Game Design, Development & Innovation at Duke University, with a B.A. in Computer Science from NYU and minors in Game Design and Japanese.",
+  "interests": "I like making things that combine systems, atmosphere, and emotion. I often start from a technical problem, but what really interests me is how the final experience feels to the player.",
+  "footer_credit": "This site: AI-assisted — vibe coded by Kingslayerrq with Claude Code",
+  "linkedin": "https://linkedin.com/in/richard-qu-cs"
 }

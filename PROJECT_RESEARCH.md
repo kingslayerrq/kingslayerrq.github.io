@@ -1,35 +1,80 @@
-# Portfolio project selection
+# Repository index and project selection
 
-Reviewed September 16, 2026. The public GitHub inventory contained 32 repositories; the user also explicitly supplied the private Unity-2D project. Selected five complementary projects rather than filling the portfolio with forks and sparse coursework.
+Indexed November 16, 2026 through the GitHub API: 67 repositories under `kingslayerrq` (58 owned, 9 forks). For each owned repository the index recorded commit count, languages, root files, commit authors, and recent commit messages. Forks are omitted from the portfolio because upstream code does not establish the owner's contribution. Private repositories were reviewed; only the ones shown on the site are named here.
 
-| Project | Reason to feature | Evidence |
-| --- | --- | --- |
-| Balatro-Clone | Strong visual centerpiece; gameplay rules, data structures, and presentation | `Assets/Scripts/ManagerScripts/HandAnalyzer.cs`, `ScoreCalculator.cs`, ScriptableObject definitions; supplied gameplay |
-| Unity-2D / Slay the Spire clone | More extensive gameplay architecture; action queue, effects, progression, build workflow | `CombatActionQueue.cs`, action/effect and persistence file inventory, README; supplied gameplay |
-| balatro-ai | Connects the game-development and CS narratives | `ai/balatro_env.py`, `ai/train.py`, replay/evaluation file inventory |
-| discord-last-login | Shows maintainable software structure and testing beyond games | README, `src/core/presence-tracker.js`, core/integration split, test inventory |
-| AI-search | Clear algorithmic fundamentals | README documenting iterative deepening and hill climbing with random restarts |
+Audience: recruiters for software engineering and gameplay engineering roles. Ordering rule: hand-coded work first, AI-assisted work second, every entry labeled.
 
-## Public source links
+## How provenance was classified
 
-Added at the owner's request: **my-web / GameDev Hub**, a prominent full-stack project with a dedicated case study. Inspected the React client, Express controllers, Prisma schema, upload/auth middleware, Discord gateway relay, and tests. Source: https://github.com/kingslayerrq/my-web/tree/0167189858f31c9c3b05174c140699414607dbe8. See `MY_WEB_REVIEW.md` for the detailed evidence and reconstruction limits. This adds a sixth selected project.
+Labels marked **owner-confirmed** were set by Richard on November 16, 2026 and override repository signals. The rest were classified from evidence, strongest first:
 
-- Profile/biography: https://github.com/kingslayerrq/kingslayerrq
-- Balatro: https://github.com/kingslayerrq/Balatro-Clone/tree/437cb76f8d5d429ce0fe1fb67dae548e46150add
-- Balatro AI: https://github.com/kingslayerrq/balatro-ai/tree/2e6e65d79c26920b3360fd8aaa8cea9eab031568
-- Last Seen: https://github.com/kingslayerrq/discord-last-login/tree/60a8049a86dfb5e44b926aadaec2fcfaebfc31f5
-- AI-search: https://github.com/kingslayerrq/AI-search/tree/6d2b7ca4851a8d3affa9e7c9400527f985a9bccb
+1. **Agent files in the repository** — `CLAUDE.md`, `AGENTS.md`, `.claude/`.
+2. **Commit trailers and branches** — `Co-Authored-By` agent trailers, `claude/…` or `codex/…` branches.
+3. **Shape of the history** — a large, fully documented codebase arriving in one or two commits.
+4. **Date** — work from 2023 and early 2024 predates the agent tooling used later.
 
-Unity-2D is private. Owner approved publishing the short `CombatActionQueue.cs` excerpt in this session. Descriptions and excerpt correspond to commit `5996ab8cd3d20b6ca6d52f04b5e0a3a747cb74b8`.
+Entries marked *inferred* rest on signal 3 only. Changing a label is a one-field edit in `content/projects.json`.
 
-Expanded at the owner's request into `site/slay-the-spire.html`: action scheduling, typed buff hooks versus C# UI events, per-target damage resolution, ScriptableObject/runtime separation, custom effect authoring, procedural map search, and versioned progression persistence. Includes the existing queue excerpt and a short damage pipeline excerpt. Full evidence and limitations are in `UNITY_2D_REVIEW.md`; the Unity checkout was not modified.
+## Featured — hand-coded
 
-## Considered but not selected
+| Project | Repository | Track | Basis |
+| --- | --- | --- | --- |
+| Slay the Spire Clone | `Unity-2D` | Gameplay | **Owner-confirmed.** 39 solo commits, Mar–Nov 2026. |
+| Balatro Clone | `Balatro-Clone` | Gameplay | **Owner-confirmed.** 20 hand commits, Mar–Jun 2025. AI was used only for a recent refactor (pull request #1, Nov 2026), noted in the case study. |
+| UnderWatch | `Booomjam2026` | Gameplay | **Owner-confirmed:** Richard wrote most of the code himself (32 of 39 commits). The repository does contain a `CLAUDE.md`. |
+| GameDev Hub | `my-web` | Software | 143 solo commits, Nov 2024–Feb 2025, no agent files or trailers. |
+| Multithreaded Run-Length Encoder | `lab3`, `lab4` | Software | NYU Operating Systems labs, late 2023: pthread worker pool; FAT32 recovery tool. |
+| Hollow Knight–Style Platformer | `IntermediateGamDevFinal` | Gameplay | 135 commits, 65 PRs, Fall 2023; four contributors, owner has the most commits (55). Uses third-party art. |
+| GGJ 2026 Jam Game | `GGJ2026` | Gameplay | 44 commits, owner 30; no agent files or trailers. *Inferred.* |
 
-- AI-RL: read README and `helper.py`; a small dice-learning exercise. Balatro AI offers a richer systems story.
-- Credit-Card-Fraud-Detection-Project: read README. Its headline 99% accuracy is uninformative for the documented 0.172% positive-class rate, so the portfolio does not repeat it as a success claim.
-- Ecosystem: source inventory is small and no matching supplied footage; lower priority than the two requested game projects.
-- Game-jam entries: potential future additions once role, contribution, and gameplay materials are established.
-- mindcraft, pensieve_ai, and other forks: omitted because upstream functionality alone does not establish the owner's contributions.
+## Featured — AI-assisted
 
-No claims of production adoption, performance gains, measured AI win rate, passing upstream tests, or complete feature parity with commercial games were added. The visual Last Seen panel and AI/search diagrams are illustrative UI, not screenshots or measured results.
+| Project | Repository | Track | Basis |
+| --- | --- | --- | --- |
+| Heritage Afterlife | `heritage-afterlife` (private) | Software | `CLAUDE.md`, `AGENTS.md`, agent trailers, `codex/…` branches. 85 commits, 17 PRs. |
+| Network — Playdate Prototype & Level Editor | `playdate` (private) | Gameplay | *Inferred:* editor, tests, and six variants landed in a handful of commits. Listed on the résumé. |
+| Heritage Devlog | `heritage-devlog` | Software | `CLAUDE.md`, `AGENTS.md`, agent trailers. Live on GitHub Pages. |
+| AI Resume Factory | `VB_Resume` | Software | `AGENTS.md` in the repository. |
+
+## Small pours
+
+| Project | Repository | Label | Basis |
+| --- | --- | --- | --- |
+| Search Under a Budget | `AI-search` | Hand-coded | 15 commits, early 2024. |
+| Endless Dodger | `InfScrollBg` | Hand-coded | 4 commits, Dec 2024. |
+| Ecosystem | `Ecosystem` | Hand-coded | 2023 coursework. |
+| Cloud Duel | `IntroGameDevFinal` | Hand-coded | 2023 GameMaker coursework. |
+| Balatro AI | `balatro-ai` | AI-assisted | *Inferred:* ~180 KB of Python and Lua across 6 commits. |
+| Last Seen | `discord-last-login` | AI-assisted | *Inferred:* full plugin, docs, and tests in 2 commits. |
+
+## Where the card images come from
+
+| Image | Source |
+| --- | --- |
+| `underwatch.jpg` | The local WebGL build run in headless Chrome; frame from the gym camera feed during a new game. |
+| `platformer.jpg` | `Assets/Scenes/Main.unity` rendered from the main camera in Unity 6000.3 batch mode (project is 2022.3; edit-mode render, cropped). |
+| `ggj-2026.jpg` | `Assets/Scenes/RQScene.unity` rendered the same way. Edit-mode render: runtime-spawned objects are absent. |
+| `heritage-devlog.jpg` | The live site in headless Chrome. |
+| `network-editor.jpg` | `tools/editor/index.html` from the repository, opened locally with the bundled “Chase map”. |
+| Code cards | Verbatim excerpts: `nyuenc.c` (lab3, debug comments trimmed) and `main.py` (VB_Resume, dedented). The Heritage Afterlife card is a diagram summarized from its README, not source code. |
+| `spire.jpg`, `balatro.jpg`, `my-web-*.png` | Earlier local recordings and a local reconstruction; see `MY_WEB_REVIEW.md` and `UNITY_2D_REVIEW.md`. |
+
+## Profile content
+
+Experience, education, skills, certification, and the Overwatch line come from Richard's résumé. The character sheet section comes from his Duke GDDI character sheet; the “special skills” meter levels are read off its radar chart by eye. The phone number and photos are deliberately not published.
+
+## Considered but not shown
+
+- **OpenJetLag** (`openjetlag.github.io`): removed at the owner's request — not his project.
+- **Forks** (`mindcraft`, `pensieve_ai`, `LeetHub`, and others): upstream work.
+- **Credit-Card-Fraud-Detection-Project** (2017): its headline accuracy is uninformative for a 0.172% positive class.
+- **AI-RL**, **OOPFinalProject**, **Froglid**, and empty or scaffold-only repositories: too small to help a recruiter.
+- **Current Duke coursework**: in progress.
+- **Profile, notes, and practice repositories**: not projects.
+
+## Source notes
+
+- Balatro excerpt pinned to commit `437cb76`, which predates the refactor.
+- Slay the Spire case study describes commit `5996ab8`; the repository is now public.
+- GameDev Hub case study describes commit `0167189`; its cloud deployment is offline. See `MY_WEB_REVIEW.md`.
+- No claims of production adoption, measured AI win rates, or feature parity with commercial games are made beyond what the résumé states.

@@ -2,70 +2,414 @@
   {
     "id": "spire",
     "title": "Slay the Spire Clone",
-    "category": "Game development",
-    "summary": "A deckbuilding combat project built around composable actions, event hooks, and data-driven rules.",
-    "tags": ["C#", "Unity", "Gameplay systems"],
+    "category": "Gameplay engineering",
+    "track": "gameplay",
+    "build": "hand",
+    "tier": "feature",
+    "year": "2026",
+    "role": "Solo developer",
+    "summary": "A deckbuilder combat engine in Unity 6: a FIFO action queue that can pause for player input, typed buff hooks, data-driven cards with custom Inspector tooling, procedural maps, and versioned saves covered by EditMode tests.",
+    "tags": [
+      "C#",
+      "Unity 6",
+      "Action queue",
+      "ScriptableObjects",
+      "Editor tooling",
+      "GameCI"
+    ],
     "image": "assets/spire.jpg",
     "image_alt": "Card-driven combat in the Slay the Spire clone",
     "url": "slay-the-spire.html",
     "link_label": "Read case study",
+    "links": [
+      {
+        "label": "Source",
+        "url": "https://github.com/kingslayerrq/Unity-2D"
+      }
+    ],
     "featured": true,
     "page": "slay-the-spire"
   },
   {
-    "id": "my-web",
-    "title": "GameDev Hub",
-    "category": "Full-stack development",
-    "summary": "A platform connecting game discovery, publishing workflows, and developer communities.",
-    "tags": ["React", "Express", "PostgreSQL"],
-    "image": "assets/my-web-catalog.png",
-    "image_alt": "GameDev Hub catalog reconstructed locally with sample records",
-    "url": "my-web.html",
-    "link_label": "Read case study",
-    "featured": true,
-    "page": "my-web"
-  },
-  {
     "id": "balatro",
     "title": "Balatro Clone",
-    "category": "Game development",
-    "summary": "A Unity study in poker-hand evaluation, staged scoring, and responsive card presentation.",
-    "tags": ["C#", "Unity", "Data structures"],
+    "category": "Gameplay engineering",
+    "track": "gameplay",
+    "build": "hand",
+    "tier": "feature",
+    "year": "2025",
+    "role": "Solo developer",
+    "summary": "A poker roguelike study: rank and suit hand evaluation, coroutine-staged scoring the player can follow card by card, ScriptableObject-driven blinds and hands, and shader-based card presentation.",
+    "tags": [
+      "C#",
+      "Unity",
+      "Coroutines",
+      "ScriptableObjects",
+      "Shaders"
+    ],
     "image": "assets/balatro.jpg",
     "image_alt": "Poker cards and scoring in the Balatro clone",
     "url": "balatro.html",
-    "link_label": "Explore project",
+    "link_label": "Read case study",
+    "links": [
+      {
+        "label": "Source",
+        "url": "https://github.com/kingslayerrq/Balatro-Clone"
+      }
+    ],
     "featured": true,
     "page": "balatro"
   },
   {
+    "id": "underwatch",
+    "title": "UnderWatch",
+    "category": "Gameplay engineering",
+    "track": "gameplay",
+    "build": "hand",
+    "tier": "feature",
+    "year": "2026",
+    "role": "Team of 3 · lead programmer (32 of 39 commits)",
+    "summary": "A BOOOM Jam 2026 game in Unity 6 URP: watch prisoners through surveillance feeds by day, defend the camera room at night. ScriptableObject prisoner actions, per-day schedule and evidence assignment, night attack routes, a save system, and a PS1-style post-process render feature.",
+    "tags": [
+      "C#",
+      "Unity 6 URP",
+      "ScriptableObjects",
+      "Render feature",
+      "Save system",
+      "WebGL"
+    ],
+    "url": "https://github.com/kingslayerrq/Booomjam2026",
+    "link_label": "View source",
+    "featured": true,
+    "image": "assets/underwatch.jpg",
+    "image_alt": "UnderWatch surveillance view: a fisheye camera feed of two prisoners in the gym, with the camera map and power, handcuff, and coffee meters"
+  },
+  {
+    "id": "my-web",
+    "title": "GameDev Hub",
+    "category": "Software engineering",
+    "track": "software",
+    "build": "hand",
+    "tier": "feature",
+    "year": "2024–25",
+    "role": "Solo developer · 143 commits",
+    "summary": "A full-stack platform for publishing and discovering games: React client, Express API, a Prisma/PostgreSQL data model, S3 uploads, Passport auth with Discord linking, and a live Discord gateway relay over WebSockets.",
+    "tags": [
+      "React",
+      "Express",
+      "PostgreSQL · Prisma",
+      "AWS S3",
+      "Redis",
+      "WebSockets",
+      "Docker"
+    ],
+    "image": "assets/my-web-catalog.png",
+    "image_alt": "GameDev Hub catalog reconstructed locally with sample records",
+    "url": "my-web.html",
+    "link_label": "Read case study",
+    "links": [
+      {
+        "label": "Source",
+        "url": "https://github.com/kingslayerrq/my-web"
+      }
+    ],
+    "featured": true,
+    "page": "my-web"
+  },
+  {
+    "id": "systems-c",
+    "title": "Multithreaded Run-Length Encoder",
+    "category": "Software engineering",
+    "track": "software",
+    "build": "hand",
+    "tier": "feature",
+    "year": "2023",
+    "role": "Solo · NYU Operating Systems",
+    "summary": "A concurrent compression tool in C: a pthread worker pool pulls chunks from a mutex-guarded task queue, encodes them in parallel, and a stitcher joins results in order. Its sibling lab is a FAT32 undelete tool that recovers deleted files, including SHA-1-verified and non-contiguous cases.",
+    "tags": [
+      "C",
+      "pthreads",
+      "Mutexes · condition variables",
+      "GDB",
+      "FAT32"
+    ],
+    "url": "https://github.com/kingslayerrq/lab3",
+    "link_label": "Encoder source",
+    "links": [
+      {
+        "label": "FAT32 recovery source",
+        "url": "https://github.com/kingslayerrq/lab4"
+      }
+    ],
+    "featured": true,
+    "snippet": {
+      "label": "nyuenc.c · worker loop, debug comments trimmed",
+      "code": "void *worker(void *arg)\n{\n    threadpool_t *pool = (threadpool_t *)arg;\n    while (1)\n    {\n        pthread_mutex_lock(&(pool->qlock));\n        while (pool->taskQueueSize == 0 && pool->encodedNum < resCount)\n        {\n            pthread_cond_wait(&(pool->task_not_empty), &(pool->qlock));\n        }\n        if (pool->encodedNum >= resCount)\n        {\n            pthread_mutex_unlock(&(pool->qlock));\n            pthread_exit(NULL);\n        }\n        //  Accept a Task\n        thread_worker *t = pool->taskQueue;\n        pool->taskQueue = t->next;\n        pool->taskQueueSize--;\n        pool->encodedNum++;\n        pthread_mutex_unlock(&(pool->qlock));\n        // Runs the Task\n        t->res = t->func(t->arg, t->chunkSize);"
+    }
+  },
+  {
+    "id": "action-platformer",
+    "title": "Hollow Knight–Style Platformer",
+    "category": "Gameplay engineering",
+    "track": "gameplay",
+    "build": "hand",
+    "tier": "feature",
+    "year": "2023",
+    "role": "Team of 4 · top contributor (55 of 135 commits)",
+    "summary": "Team final for Intermediate Game Development at NYU: a Hollow Knight–inspired 2D action platformer with up, down, and side slash combat, a time-slow ability, ground and flying enemies, and a boss encounter, built over 65 pull requests.",
+    "tags": [
+      "C#",
+      "Unity",
+      "Combat",
+      "Enemy AI",
+      "Team · PR workflow"
+    ],
+    "url": "https://github.com/kingslayerrq/IntermediateGamDevFinal",
+    "link_label": "View source",
+    "featured": false,
+    "image": "assets/platformer.jpg",
+    "image_alt": "The platformer's main scene rendered in Unity: the player character on a ledge in front of tall arched windows"
+  },
+  {
+    "id": "ggj-2026",
+    "title": "GGJ 2026 Jam Game",
+    "category": "Gameplay engineering",
+    "track": "gameplay",
+    "build": "hand",
+    "tier": "feature",
+    "year": "2026",
+    "role": "Team project · repo maintainer (30 of 44 commits)",
+    "summary": "A Global Game Jam 2026 team entry in Unity 6: underwater exploration with a seahorse controller and ocean resistance, dialogue and quest interactions, a crab-rush minigame, and an in-game screenshot gallery. I also ran the repo: PR workflow, branch rules, and Unity CI.",
+    "tags": [
+      "C#",
+      "Unity 6",
+      "Game jam",
+      "CI",
+      "Team · PR workflow"
+    ],
+    "url": "https://github.com/kingslayerrq/GGJ2026",
+    "link_label": "View source",
+    "featured": false,
+    "image": "assets/ggj-2026.jpg",
+    "image_alt": "The jam game's underwater scene rendered in Unity: light rays over a sandy seabed with a school of fish"
+  },
+  {
+    "id": "heritage-afterlife",
+    "title": "Heritage Afterlife",
+    "category": "Software engineering",
+    "track": "software",
+    "build": "ai",
+    "build_note": "Built with Claude Code and Codex agents; the repository keeps its CLAUDE.md and AGENTS.md.",
+    "tier": "feature",
+    "year": "2026",
+    "role": "Solo · 85 commits, 17 pull requests",
+    "summary": "A Discord community and project-operations system for a game team: a Node.js bot for member interactions and a Python hub that verifies identities, settles rewards, and reports from Jira, Perforce, Notion, and build pipelines. Runs on a GCP VM with Docker Compose.",
+    "tags": [
+      "Node.js",
+      "Python",
+      "Discord API",
+      "Jira",
+      "Docker",
+      "GCP"
+    ],
+    "private": true,
+    "featured": true,
+    "snippet": {
+      "label": "architecture · summarized from the project README",
+      "code": "Discord members\n      |  slash commands, DMs\n      v\nDelamain bot (Node.js) --> member + admin dashboards\n      |\n      v\nPython Hub -- verifies identities, settles rewards\n      |-- Jira      sprint gigs, stand-up threads\n      |-- Perforce  commit reports\n      |-- Notion    devlog publishing\n      '-- Builds    pipeline reports\n\nDocker Compose on a GCP VM"
+    }
+  },
+  {
+    "id": "network",
+    "title": "Network — Playdate Prototype & Level Editor",
+    "category": "Gameplay engineering",
+    "track": "gameplay",
+    "build": "ai",
+    "tier": "feature",
+    "year": "2026",
+    "role": "Solo",
+    "summary": "A hacking puzzle game for the Playdate handheld in Lua, plus an offline visual node-graph editor with validation, JSON save/load, and Lua export. A Docker-based Playdate SDK environment runs automated JavaScript and Lua tests and packages the build. Released on itch.io.",
+    "tags": [
+      "Lua",
+      "Playdate SDK",
+      "JavaScript",
+      "Docker",
+      "Level editor"
+    ],
+    "url": "https://kingslayerrq.itch.io/network",
+    "link_label": "Play on itch.io",
+    "featured": true,
+    "image": "assets/network-editor.jpg",
+    "image_alt": "Network Workshop level editor showing the Containment Grid map: nodes, locks, switches, and routes on a grid, with tool and inspector panels"
+  },
+  {
+    "id": "heritage-devlog",
+    "title": "Heritage Devlog",
+    "category": "Software engineering",
+    "track": "software",
+    "build": "ai",
+    "build_note": "Built with Claude Code and Codex agents; the repository keeps its CLAUDE.md and AGENTS.md.",
+    "tier": "feature",
+    "year": "2026",
+    "role": "Solo developer",
+    "summary": "A public development journal with an automated publishing pipeline: authors verify through Discord, submit Markdown through Git branches or Notion, and valid entries are checked, merged, and deployed to GitHub Pages.",
+    "tags": [
+      "Astro",
+      "TypeScript",
+      "GitHub Actions",
+      "Notion"
+    ],
+    "url": "https://kingslayerrq.github.io/heritage-devlog/",
+    "link_label": "Visit live site",
+    "links": [
+      {
+        "label": "Source",
+        "url": "https://github.com/kingslayerrq/heritage-devlog"
+      }
+    ],
+    "featured": false,
+    "image": "assets/heritage-devlog.jpg",
+    "image_alt": "Heritage devlog homepage: a development journal with category filters and the latest entry"
+  },
+  {
+    "id": "resume-factory",
+    "title": "AI Resume Factory",
+    "category": "Software engineering",
+    "track": "software",
+    "build": "ai",
+    "build_note": "Built with AI coding agents; the repository keeps its AGENTS.md.",
+    "tier": "feature",
+    "year": "2026",
+    "role": "Solo developer",
+    "summary": "Job-application automation: scrapes job boards and Gmail alerts, tailors a resume per posting with a local Ollama or OpenAI model, renders PDFs with Playwright, and syncs results to Drive, Notion, and Discord. Ships with CI tests and lint.",
+    "tags": [
+      "Python",
+      "LLM agents",
+      "Playwright",
+      "Google APIs",
+      "pytest"
+    ],
+    "url": "https://github.com/kingslayerrq/VB_Resume",
+    "link_label": "View source",
+    "featured": false,
+    "snippet": {
+      "label": "main.py · web and Gmail scrapers run concurrently",
+      "code": "if current_offset == 0 and use_email:\n    log(f\"   📧 Email Scraper Active (Limit: {email_limit})\", status_callback)\n    email_task = asyncio.to_thread(fetch_job_urls_from_gmail, max_results=email_limit)\nelse:\n    # On subsequent loops, return empty list instantly (don't check email again)\n    email_task = asyncio.create_task(asyncio.sleep(0, result=[]))\n\n# 3. Execute Both Simultaneously\nlog(\"   ⏳ Waiting for Gmail and JobSpy...\", status_callback)\nweb_results, email_results = await asyncio.gather(web_task, email_task)"
+    }
+  },
+  {
+    "id": "ai-search",
+    "title": "Search Under a Budget",
+    "category": "Software engineering",
+    "track": "software",
+    "build": "hand",
+    "tier": "small",
+    "year": "2024",
+    "role": "Solo",
+    "summary": "Iterative deepening and hill climbing with random restarts for a budget-constrained selection problem, with verbose and compact search traces.",
+    "tags": [
+      "Python",
+      "Search",
+      "Algorithms"
+    ],
+    "url": "https://github.com/kingslayerrq/AI-search",
+    "link_label": "View source",
+    "featured": false
+  },
+  {
+    "id": "endless-dodger",
+    "title": "Endless Dodger",
+    "category": "Gameplay engineering",
+    "track": "gameplay",
+    "build": "hand",
+    "tier": "small",
+    "year": "2024",
+    "role": "Solo",
+    "summary": "An endless-scrolling Unity prototype: seamless looping background, obstacle spawner, observer-pattern damage events, and a local scoreboard.",
+    "tags": [
+      "C#",
+      "Unity",
+      "Observer pattern"
+    ],
+    "url": "https://github.com/kingslayerrq/InfScrollBg",
+    "link_label": "View source",
+    "featured": false
+  },
+  {
+    "id": "ecosystem",
+    "title": "Ecosystem",
+    "category": "Gameplay engineering",
+    "track": "gameplay",
+    "build": "hand",
+    "tier": "small",
+    "year": "2023",
+    "role": "Solo",
+    "summary": "A beach ecosystem simulation in Unity where crabs, seagulls, lifeguards, and bubbles act as interacting autonomous agents.",
+    "tags": [
+      "C#",
+      "Unity",
+      "Agents"
+    ],
+    "url": "https://github.com/kingslayerrq/Ecosystem",
+    "link_label": "View source",
+    "featured": false
+  },
+  {
+    "id": "cloud-duel",
+    "title": "Cloud Duel",
+    "category": "Gameplay engineering",
+    "track": "gameplay",
+    "build": "hand",
+    "tier": "small",
+    "year": "2023",
+    "role": "Solo",
+    "summary": "A two-player GameMaker action game: dash and descend movement, clouds that grow and break, round and score managers, screenshake, and particles.",
+    "tags": [
+      "GameMaker",
+      "GML",
+      "Game feel"
+    ],
+    "url": "https://github.com/kingslayerrq/IntroGameDevFinal",
+    "link_label": "View source",
+    "featured": false
+  },
+  {
     "id": "balatro-ai",
     "title": "Balatro AI",
-    "category": "Machine learning",
-    "summary": "A Gymnasium environment and socket bridge that give a PPO agent a structured way to interact with Balatro.",
-    "tags": ["Python", "Gymnasium", "PPO"],
+    "category": "Software engineering",
+    "track": "software",
+    "build": "ai",
+    "tier": "small",
+    "year": "2025–26",
+    "role": "Solo",
+    "summary": "A Gymnasium environment and a Lua mod socket bridge that let a PPO agent play Balatro, with training, evaluation, and replay tooling.",
+    "tags": [
+      "Python",
+      "Gymnasium",
+      "PPO",
+      "Lua"
+    ],
     "url": "https://github.com/kingslayerrq/balatro-ai",
-    "link_label": "View repository",
+    "link_label": "View source",
     "featured": false
   },
   {
     "id": "last-seen",
     "title": "Last Seen",
     "category": "Software engineering",
-    "summary": "A BetterDiscord plugin with local presence history, defensive event parsing, and a separately tested core.",
-    "tags": ["JavaScript", "Persistence", "Testing"],
+    "track": "software",
+    "build": "ai",
+    "tier": "small",
+    "year": "2026",
+    "role": "Solo",
+    "summary": "A local-only BetterDiscord plugin that remembers when users were last observed online, with a separately tested core, CI, and tagged releases.",
+    "tags": [
+      "JavaScript",
+      "Testing",
+      "CI releases"
+    ],
     "url": "https://github.com/kingslayerrq/discord-last-login",
-    "link_label": "View repository",
-    "featured": false
-  },
-  {
-    "id": "ai-search",
-    "title": "Search under constraints",
-    "category": "Computer science",
-    "summary": "Iterative deepening and hill climbing with random restarts for a budget-constrained search problem.",
-    "tags": ["Python", "Search", "Algorithms"],
-    "url": "https://github.com/kingslayerrq/AI-search",
-    "link_label": "View repository",
+    "link_label": "View source",
     "featured": false
   }
 ]

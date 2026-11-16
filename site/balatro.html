@@ -1,43 +1,91 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-fx="on">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="A Unity study in poker-hand evaluation, staged scoring, and responsive card presentation.">
-  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="A poker roguelike study: rank and suit hand evaluation, coroutine-staged scoring the player can follow card by card, ScriptableObject-driven blinds and hands, and shader-based card presentation.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b0817">
   <title>Balatro Clone — Richard Qu</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <script src="theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&amp;family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&amp;family=Silkscreen:wght@400;700&amp;family=VT323&amp;display=swap">
+  <script src="fx.js"></script>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
 <body class="case-page">
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="header wrap">
-    <a class="brand" href="index.html" aria-label="Richard Qu, home"><span class="brand-mark">rq<span>_</span></span><span>Kingslayerrq<small>PERSONAL NODE / 001</small></span></a>
-    <nav aria-label="Main navigation"><a href="index.html#about">About</a><a href="projects.html">Projects</a><a href="index.html#contact">Contact</a></nav>
-    <button class="theme-toggle" type="button" aria-label="Switch to light mode"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Light mode</span></button>
+  <svg class="sprites" width="0" height="0" aria-hidden="true" focusable="false">
+    <symbol id="glass-gameplay" viewBox="0 0 16 16">
+      <rect x="12" y="0" width="1" height="4" style="fill:var(--garnish)"/><rect x="11" y="0" width="3" height="1" style="fill:var(--garnish)"/>
+      <rect x="1" y="2" width="14" height="1" style="fill:var(--glass)"/>
+      <rect x="2" y="3" width="12" height="1" style="fill:var(--drink)"/><rect x="3" y="4" width="10" height="1" style="fill:var(--drink)"/>
+      <rect x="4" y="5" width="8" height="1" style="fill:var(--drink)"/><rect x="5" y="6" width="6" height="1" style="fill:var(--drink)"/>
+      <rect x="6" y="7" width="4" height="1" style="fill:var(--drink)"/><rect x="7" y="8" width="2" height="1" style="fill:var(--drink)"/>
+      <rect x="7" y="9" width="2" height="4" style="fill:var(--glass)"/><rect x="4" y="13" width="8" height="1" style="fill:var(--glass)"/>
+      <rect x="3" y="4" width="2" height="1" style="fill:#fff;opacity:.5"/>
+    </symbol>
+    <symbol id="glass-software" viewBox="0 0 16 16">
+      <rect x="10" y="0" width="1" height="9" style="fill:var(--garnish)"/>
+      <rect x="3" y="2" width="1" height="12" style="fill:var(--glass)"/><rect x="12" y="2" width="1" height="12" style="fill:var(--glass)"/>
+      <rect x="3" y="13" width="10" height="1" style="fill:var(--glass)"/>
+      <rect x="4" y="6" width="8" height="7" style="fill:var(--drink)"/>
+      <rect x="5" y="4" width="3" height="3" style="fill:#fff;opacity:.55"/><rect x="8" y="7" width="3" height="3" style="fill:#fff;opacity:.3"/>
+    </symbol>
+  </svg>
+  <header class="hud">
+    <div class="hud-inner wrap">
+      <a class="brand" href="index.html" aria-label="Richard Qu, home"><svg class="glass" viewBox="0 0 16 16" aria-hidden="true"><use href="#glass-gameplay"/></svg><span>RQ<b>//</b>BAR<small>Kingslayerrq · night shift</small></span></a>
+      <nav aria-label="Main navigation"><a data-nav="home" href="index.html">Home</a><a data-nav="projects" href="projects.html">Projects</a><a href="index.html#experience">Experience</a><a href="index.html#about">About</a><a href="#contact">Contact</a></nav>
+      <div class="hud-status"><span class="hud-open"><i aria-hidden="true"></i>Open</span><span class="hud-clock" data-clock aria-hidden="true">--:--</span><button class="fx-toggle" type="button" aria-pressed="true">CRT FX <span class="fx-state">On</span></button></div>
+    </div>
   </header>
   <main id="main" class="case-study wrap">
-<section class="case-hero"><a class="text-link" href="projects.html#balatro">← Back to projects</a><p class="eyebrow accent">GAME DEVELOPMENT / UNITY / C#</p><h1>Balatro Clone<span class="title-dot">.</span></h1><p class="case-lead">Exploring the data structures and presentation behind a poker-inspired roguelike.</p></section>
-      <article class="feature" id="balatro">
-        <div class="project-media"><div class="media-label"><span>01 / GAME DEVELOPMENT</span><span>GAMEPLAY CAPTURE</span></div><video controls playsinline preload="none" poster="assets/balatro.jpg" aria-label="Balatro clone gameplay demonstration"><source src="assets/balatro.webm" type="video/webm"><source src="assets/balatro.mp4" type="video/mp4">Your browser does not support video. <a href="assets/balatro.mp4">Download gameplay</a>.</video><p class="media-caption">Poker-hand scoring, card selection, and blind progression.</p></div>
-        <div class="project-copy"><p class="eyebrow accent">UNITY / C#</p><h3>Balatro Clone<span class="small-arrow" aria-hidden="true">↗</span></h3><p>A study in making game rules feel tangible. This Unity recreation connects poker-hand evaluation with a staged scoring sequence and responsive card presentation.</p><ul class="technical"><li><strong>Hand evaluation</strong><span>Rank and suit dictionaries identify hand types and the cards that contribute to scoring.</span></li><li><strong>Scoring & presentation</strong><span>Coroutines score cards in sequence; Unity events drive chip, multiplier, and score feedback.</span></li><li><strong>Configurable game data</strong><span>ScriptableObjects describe cards, hands, blinds, and panel behavior.</span></li></ul><div class="tags"><span>Data structures</span><span>Coroutines</span><span>ScriptableObjects</span></div><div class="project-links"><a class="text-link" href="https://github.com/kingslayerrq/Balatro-Clone">View repository ↗</a><a class="text-link" href="#code-balatro">Inside the code ↓</a></div></div>
-      </article>
-      <details class="code-detail" id="code-balatro"><summary><span><span class="accent">&lt;/&gt;</span> Inside the code <span class="summary-note">/ staged card scoring</span></span><span class="expand" aria-hidden="true">+</span></summary><div class="code-body"><div><h4>Let the player follow the math.</h4><p>Each card finishes its scoring coroutine before the next begins. The short interval makes individual contributions visible before chips and multiplier become a final score.</p><a href="https://github.com/kingslayerrq/Balatro-Clone/blob/437cb76f8d5d429ce0fe1fb67dae548e46150add/Assets/Scripts/ManagerScripts/ScoreCalculator.cs">ScoreCalculator.cs ↗</a></div><pre><code>foreach (var card in cards)
+  <section class="case-hero" aria-labelledby="case-title">
+    <a class="text-link" href="projects.html#balatro">← Back to the menu</a>
+    <p class="eyebrow accent">Case study / Gameplay systems / Balatro-Clone</p>
+    <h1 id="case-title">Score a hand.<br><em>Show the math.</em></h1>
+    <p class="case-lead">A Unity recreation of a poker roguelike’s core loop, built to study how hand evaluation, staged scoring, and card presentation fit together.</p>
+    <p class="case-badge"><span class="badges"><span class="badge badge-hand">Hand-coded</span></span></p>
+    <div class="tags"><span>C# · Unity</span><span>Data structures</span><span>Coroutines</span><span>ScriptableObjects</span><span>Shaders</span></div>
+    <div class="project-links"><a class="text-link" href="https://github.com/kingslayerrq/Balatro-Clone">View repository ↗</a><a class="text-link" href="#code-balatro">Inside the code ↓</a></div>
+  </section>
+  <div class="project-media"><div class="media-label"><span>Balatro clone</span><span>Gameplay capture</span></div><video controls playsinline preload="none" poster="assets/balatro.jpg" aria-label="Balatro clone gameplay demonstration"><source src="assets/balatro.webm" type="video/webm"><source src="assets/balatro.mp4" type="video/mp4">Your browser does not support video. <a href="assets/balatro.mp4">Download gameplay</a>.</video><p class="media-caption">Poker-hand scoring, card selection, and blind progression in a 2025 development build.</p></div>
+  <section class="case-section case-overview" aria-labelledby="overview-title">
+    <div><p class="eyebrow">The engineering question</p><h2 id="overview-title">How do rules<br>become feel?</h2></div>
+    <div><p>A played hand has to be recognized, broken into the cards that actually score, and then paid out in a sequence the player can follow. Each step is simple; the interest is in how they hand off to each other.</p><p>I split the project into evaluation, scoring, and presentation, with ScriptableObjects describing the data each one consumes.</p></div>
+  </section>
+  <section class="case-section" id="systems" aria-labelledby="systems-title">
+    <p class="eyebrow">01 / Systems</p><h2 id="systems-title">Three parts of one loop.</h2>
+    <div class="reflection-grid"><article><span class="accent">Hand evaluation</span><h3>Recognize the hand</h3><p>Rank and suit dictionaries identify hand types and the cards that contribute to scoring.</p></article><article><span class="accent">Scoring &amp; presentation</span><h3>Pay it out in order</h3><p>Coroutines score cards in sequence; Unity events drive chip, multiplier, and score feedback.</p></article><article><span class="accent">Configurable game data</span><h3>Author it as assets</h3><p>ScriptableObjects describe cards, hands, blinds, and panel behavior.</p></article></div>
+  </section>
+  <details class="code-detail" id="code-balatro"><summary><span><span class="accent">&lt;/&gt;</span> Inside the code <span class="summary-note">/ staged card scoring</span></span><span class="expand" aria-hidden="true">+</span></summary><div class="code-body"><div><h4>Let the player follow the math.</h4><p>Each card finishes its scoring coroutine before the next begins. The short interval makes individual contributions visible before chips and multiplier become a final score.</p><a class="text-link" href="https://github.com/kingslayerrq/Balatro-Clone/blob/437cb76f8d5d429ce0fe1fb67dae548e46150add/Assets/Scripts/ManagerScripts/ScoreCalculator.cs">ScoreCalculator.cs ↗</a></div><pre><code>foreach (var card in cards)
 {
     yield return StartCoroutine(card.cardScore.ScoreCoroutine());
     yield return new WaitForSecondsRealtime(cardScoringGap);
 }
 
 curScore = curChips * curMults;</code></pre></div></details>
-<p class="project-note">An educational recreation inspired by Balatro. Original game names and third-party artwork belong to their respective creators. Footage shows a development build.</p></main>
+  <section class="case-section" id="provenance" aria-labelledby="provenance-title">
+    <p class="eyebrow">02 / Build notes</p><h2 id="provenance-title">Hand-built. Recently refactored.</h2>
+    <div class="case-columns"><div><h3>Written by hand · March–June 2025</h3><p>The game itself: card and deck data, hand analysis, the scoring sequence, round, run, and ante managers, panels, audio, and the card visuals. The excerpt above is pinned to that hand-written code.</p></div><div><h3>Refactor pass · November 2026</h3><p>A recent cleanup pull request, done with Claude Code as an assistant: hand evaluation extracted into a pure <code>HandEvaluator</code> with EditMode tests, card movement and round flow reworked, singleton and dead-code cleanup, and the upgrade to Unity 6000.3 / URP 17.3.</p></div></div>
+    <p class="case-note">Source: commit history of Balatro-Clone. The refactor arrived as pull request #1 from the <code>claude/refactor</code> branch.</p>
+  </section>
+  <div class="case-end"><h2>Simple rules.<br><em>Visible math.</em></h2><a class="button primary" href="projects.html">Back to the menu ←</a></div>
+  <p class="project-note">An educational recreation inspired by Balatro. Original game names and third-party artwork belong to their respective creators. Footage shows a development build.</p>
+</main>
 
   <footer class="site-footer wrap" id="contact">
-    <div class="footer-heading"><p class="eyebrow">LET’S CONNECT</p><a class="footer-email" href="mailto:rq2014@nyu.edu">rq2014@nyu.edu <span aria-hidden="true">↗</span></a><p>Games, software, or something in between.</p></div>
-    <div class="footer-links"><a href="https://github.com/kingslayerrq">GitHub / Kingslayerrq ↗</a><a href="https://discord.com/users/1225896471812112426">Discord ID: 1225896471812112426 ↗</a></div>
-    <div class="footer-bottom"><span>vibe coded by Kingslayerrq</span><span>Richard Qu · <span class="accent">a presence in the wired</span></span><a href="#main">Back to top ↑</a></div>
+    <div class="win lastcall">
+      <div class="win-bar"><span>Last call <i aria-hidden="true">//</i> Contact</span><span aria-hidden="true">_ □ ×</span></div>
+      <div class="lastcall-body">
+        <div><p class="eyebrow">Hiring for gameplay or software engineering?</p><a class="footer-email" href="mailto:rq2014@nyu.edu">rq2014@nyu.edu</a><p>Open to software and gameplay engineering roles. Email is the fastest way to reach me.</p></div>
+        <ul class="footer-links"><li><a href="https://github.com/kingslayerrq">GitHub / Kingslayerrq <span aria-hidden="true">↗</span></a></li><li><a href="https://linkedin.com/in/richard-qu-cs">LinkedIn / richard-qu-cs <span aria-hidden="true">↗</span></a></li><li><a href="https://kingslayerrq.itch.io">itch.io / playable builds <span aria-hidden="true">↗</span></a></li><li><a href="https://discord.com/users/1225896471812112426">Discord ID: 1225896471812112426 <span aria-hidden="true">↗</span></a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>This site: AI-assisted — vibe coded by Kingslayerrq with Claude Code</span><span>Original pixel art and CSS. No third-party game assets.</span><a href="#main">Back to top ↑</a></div>
   </footer>
 </body>
 </html>
-

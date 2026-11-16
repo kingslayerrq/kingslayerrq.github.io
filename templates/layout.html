@@ -1,29 +1,57 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-fx="on">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="{{description}}">
-  <meta name="color-scheme" content="dark light">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b0817">
   <title>{{title}}</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <script src="theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&amp;family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&amp;family=Silkscreen:wght@400;700&amp;family=VT323&amp;display=swap">
+  <script src="fx.js"></script>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
 <body class="{{body_class}}">
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="header wrap">
-    <a class="brand" href="index.html" aria-label="{{name}}, home"><span class="brand-mark">rq<span>_</span></span><span>{{handle}}<small>PERSONAL NODE / 001</small></span></a>
-    <nav aria-label="Main navigation"><a href="index.html#about">About</a><a href="projects.html">Projects</a><a href="index.html#contact">Contact</a></nav>
-    <button class="theme-toggle" type="button" aria-label="Switch to light mode"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Light mode</span></button>
+  <svg class="sprites" width="0" height="0" aria-hidden="true" focusable="false">
+    <symbol id="glass-gameplay" viewBox="0 0 16 16">
+      <rect x="12" y="0" width="1" height="4" style="fill:var(--garnish)"/><rect x="11" y="0" width="3" height="1" style="fill:var(--garnish)"/>
+      <rect x="1" y="2" width="14" height="1" style="fill:var(--glass)"/>
+      <rect x="2" y="3" width="12" height="1" style="fill:var(--drink)"/><rect x="3" y="4" width="10" height="1" style="fill:var(--drink)"/>
+      <rect x="4" y="5" width="8" height="1" style="fill:var(--drink)"/><rect x="5" y="6" width="6" height="1" style="fill:var(--drink)"/>
+      <rect x="6" y="7" width="4" height="1" style="fill:var(--drink)"/><rect x="7" y="8" width="2" height="1" style="fill:var(--drink)"/>
+      <rect x="7" y="9" width="2" height="4" style="fill:var(--glass)"/><rect x="4" y="13" width="8" height="1" style="fill:var(--glass)"/>
+      <rect x="3" y="4" width="2" height="1" style="fill:#fff;opacity:.5"/>
+    </symbol>
+    <symbol id="glass-software" viewBox="0 0 16 16">
+      <rect x="10" y="0" width="1" height="9" style="fill:var(--garnish)"/>
+      <rect x="3" y="2" width="1" height="12" style="fill:var(--glass)"/><rect x="12" y="2" width="1" height="12" style="fill:var(--glass)"/>
+      <rect x="3" y="13" width="10" height="1" style="fill:var(--glass)"/>
+      <rect x="4" y="6" width="8" height="7" style="fill:var(--drink)"/>
+      <rect x="5" y="4" width="3" height="3" style="fill:#fff;opacity:.55"/><rect x="8" y="7" width="3" height="3" style="fill:#fff;opacity:.3"/>
+    </symbol>
+  </svg>
+  <header class="hud">
+    <div class="hud-inner wrap">
+      <a class="brand" href="index.html" aria-label="{{name}}, home"><svg class="glass" viewBox="0 0 16 16" aria-hidden="true"><use href="#glass-gameplay"/></svg><span>RQ<b>//</b>BAR<small>{{handle}} · night shift</small></span></a>
+      <nav aria-label="Main navigation"><a data-nav="home" href="index.html">Home</a><a data-nav="projects" href="projects.html">Projects</a><a href="index.html#experience">Experience</a><a href="index.html#about">About</a><a href="#contact">Contact</a></nav>
+      <div class="hud-status"><span class="hud-open"><i aria-hidden="true"></i>Open</span><span class="hud-clock" data-clock aria-hidden="true">--:--</span><button class="fx-toggle" type="button" aria-pressed="true">CRT FX <span class="fx-state">On</span></button></div>
+    </div>
   </header>
   {{body}}
   <footer class="site-footer wrap" id="contact">
-    <div class="footer-heading"><p class="eyebrow">LET’S CONNECT</p><a class="footer-email" href="mailto:{{email}}">{{email}} <span aria-hidden="true">↗</span></a><p>Games, software, or something in between.</p></div>
-    <div class="footer-links"><a href="{{github}}">GitHub / {{handle}} ↗</a><a href="https://discord.com/users/{{discord_id}}">Discord ID: {{discord_id}} ↗</a></div>
-    <div class="footer-bottom"><span>{{footer_credit}}</span><span>Richard Qu · <span class="accent">a presence in the wired</span></span><a href="#main">Back to top ↑</a></div>
+    <div class="win lastcall">
+      <div class="win-bar"><span>Last call <i aria-hidden="true">//</i> Contact</span><span aria-hidden="true">_ □ ×</span></div>
+      <div class="lastcall-body">
+        <div><p class="eyebrow">Hiring for gameplay or software engineering?</p><a class="footer-email" href="mailto:{{email}}">{{email}}</a><p>Open to software and gameplay engineering roles. Email is the fastest way to reach me.</p></div>
+        <ul class="footer-links"><li><a href="{{github}}">GitHub / {{handle}} <span aria-hidden="true">↗</span></a></li><li><a href="{{linkedin}}">LinkedIn / richard-qu-cs <span aria-hidden="true">↗</span></a></li><li><a href="{{itch}}">itch.io / playable builds <span aria-hidden="true">↗</span></a></li><li><a href="https://discord.com/users/{{discord_id}}">Discord ID: {{discord_id}} <span aria-hidden="true">↗</span></a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>{{footer_credit}}</span><span>Original pixel art and CSS. No third-party game assets.</span><a href="#main">Back to top ↑</a></div>
   </footer>
 </body>
 </html>
-

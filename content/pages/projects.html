@@ -1,5 +1,34 @@
-<main id="main" class="project-index wrap">
-  <section class="case-hero"><p class="eyebrow">PROJECT DIRECTORY / {{project_count}} ENTRIES</p><h1>Experiments.<br><em>Made tangible.</em></h1><p class="case-lead">Games, agents, and software. Pick a project to explore the implementation, gameplay, and decisions behind it.</p></section>
-  <div class="catalog-grid">{{all_projects}}</div>
-  <p class="project-note">Game clones are educational projects. Original game names and third-party artwork belong to their respective creators. GameDev Hub imagery shows a local reconstruction with sample data.</p>
+<main id="main" class="menu-page wrap">
+  <section class="page-hero" aria-labelledby="menu-title">
+    <p class="eyebrow">Full menu / {{project_count}} entries</p>
+    <h1 id="menu-title">The menu<span class="title-dot">.</span></h1>
+    <p class="case-lead">Hand-coded work first, AI-assisted work second, every entry labeled. {{hand_count}} hand-coded · {{ai_count}} AI-assisted.</p>
+    <div class="filters" data-filters hidden>
+      <div class="filter-group" role="group" aria-label="Filter by role"><span>Role</span><button type="button" data-filter-track="all" aria-pressed="true">All</button><button type="button" data-filter-track="gameplay" aria-pressed="false">Gameplay</button><button type="button" data-filter-track="software" aria-pressed="false">Software</button></div>
+      <div class="filter-group" role="group" aria-label="Filter by how it was built"><span>Built</span><button type="button" data-filter-build="all" aria-pressed="true">All</button><button type="button" data-filter-build="hand" aria-pressed="false">Hand-coded</button><button type="button" data-filter-build="ai" aria-pressed="false">AI-assisted</button></div>
+      <p class="filter-count" data-filter-count aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="menu-section" data-group aria-labelledby="hand-gameplay-title">
+    <div class="section-head"><p class="eyebrow">01 / Hand-coded</p><h2 id="hand-gameplay-title">Gameplay engineering<span class="title-dot">.</span></h2></div>
+    <div class="drink-grid lead-first">{{menu_hand_gameplay}}</div>
+  </section>
+
+  <section class="menu-section" data-group aria-labelledby="hand-software-title">
+    <div class="section-head"><p class="eyebrow">02 / Hand-coded</p><h2 id="hand-software-title">Software engineering<span class="title-dot">.</span></h2></div>
+    <div class="drink-grid">{{menu_hand_software}}</div>
+  </section>
+
+  <section class="menu-section ai-section" data-group aria-labelledby="ai-title">
+    <div class="section-head"><p class="eyebrow">03 / Machine-assisted</p><h2 id="ai-title">Built with AI<span class="title-dot">.</span></h2><p>Shipped with coding agents such as Claude Code and Codex. Each card says which.</p></div>
+    <div class="drink-grid">{{menu_ai}}</div>
+  </section>
+
+  <section class="menu-section" data-group aria-labelledby="small-title">
+    <div class="section-head"><p class="eyebrow">04 / Small pours</p><h2 id="small-title">Earlier and smaller work<span class="title-dot">.</span></h2></div>
+    <ul class="pour-list">{{menu_small}}</ul>
+  </section>
+
+  <p class="project-note">Game clones are educational projects; original game names and third-party artwork belong to their creators. GameDev Hub imagery shows a local reconstruction with sample data. Labels reflect how each project was built; case studies note any later AI-assisted refactoring. The platformer is a class project that uses third-party art.</p>
 </main>
