@@ -28,7 +28,7 @@ There is no automatic file watcher. CSS and JavaScript edits require only a refr
 
 | File | Purpose |
 | --- | --- |
-| `content/profile.json` | Name, handle, role, biography, contact details, and footer credit |
+| `content/profile.json` | Name, handle, role, biography, contact details, footer credit, and `jukebox_album` (the Spotify album ID for the corner jukebox; the player loads only when a visitor opens it) |
 | `content/projects.json` | Every project: text, tags, role, links, and its `build` / `track` / `tier` labels |
 | `content/pages/home.html` | Homepage: hero, dialogue lines, featured projects, experience, about, character sheet |
 | `content/pages/projects.html` | Full menu layout and filters |

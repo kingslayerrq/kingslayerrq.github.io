@@ -124,3 +124,32 @@ document.querySelectorAll('video').forEach(video => {
     });
   });
 });
+
+// Jukebox: the Spotify player loads only after the visitor opens it, and nothing autoplays.
+const jukebox = document.querySelector('[data-jukebox]');
+if (jukebox) {
+  const panel = jukebox.querySelector('.jukebox-panel');
+  const link = jukebox.querySelector('.jukebox-toggle');
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = link.className;
+  toggle.innerHTML = link.innerHTML;
+  toggle.setAttribute('aria-controls', panel.id);
+  toggle.setAttribute('aria-expanded', 'false');
+  link.replaceWith(toggle);
+  toggle.addEventListener('click', () => {
+    if (!panel.querySelector('iframe')) {
+      const frame = document.createElement('iframe');
+      frame.title = 'Spotify player';
+      frame.loading = 'lazy';
+      frame.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+      frame.src = `https://open.spotify.com/embed/album/${encodeURIComponent(jukebox.dataset.jukebox)}?theme=0`;
+      panel.querySelector('.jukebox-body').append(frame);
+      panel.hidden = false;
+      panel.classList.add('is-min');
+    }
+    const open = panel.classList.toggle('is-min') === false;
+    panel.inert = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+}
